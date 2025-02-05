@@ -14,7 +14,13 @@
         }
     ],
     "require": {
-        "php": "^8.0"
+        "php": "^8.2",
+        "laravel/framework": "^11.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "amirhome\\HelloWorld\\Tests\\": "tests/"
+        }
     },
     "extra": {
         "laravel": {
@@ -23,6 +29,16 @@
             ]
         }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/AmirHome/hello_world.git",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 }
+
