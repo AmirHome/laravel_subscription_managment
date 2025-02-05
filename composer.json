@@ -1,6 +1,7 @@
 {
     "name": "amirhome/hello_world",
     "description": "My own laravel package",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "amirhome\\HelloWorld\\": "src/"
