@@ -20,5 +20,7 @@
                 "amirhome\\HelloWorld\\HelloWorldServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
