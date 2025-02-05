@@ -1,6 +1,6 @@
 <?php
 
-namespace Amirhoss\HelloWorld;
+namespace amirhome\HelloWorld;
 
 use Illuminate\Support\ServiceProvider;
 
