@@ -1,6 +1,6 @@
 {
     "name": "amirhome/laravel_subscription_managment",
-    "description": "My own laravel package",
+    "description": "laravel_subscription_managment is a flexible plan and subscription management system for Laravel, offering essential tools to efficiently run your SAAS-like services. With a simple architecture and robust foundation, it provides a solid platform to effortlessly manage plans and subscriptions.",
     "license": "MIT",
     "autoload": {
         "psr-4": {
