@@ -1,10 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use amirhome\HelloWorld\Http\Controllers\HelloWorldController;
+use amirhome\LaravelSubscriptionManagment\Http\Controllers\LaravelSubscriptionManagmentController;
 
-Route::prefix(config('hello_world.path'))
-    ->middleware(config('hello_world.middleware'))
+Route::prefix(config('laravel_subscription_managment.path'))
+    ->middleware(config('laravel_subscription_managment.middleware'))
     ->group(function () {
-        Route::get('/', [HelloWorldController::class, 'index']);
+        Route::get('/', [LaravelSubscriptionManagmentController::class, 'index']);
     });

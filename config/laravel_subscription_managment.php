@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'path' => 'hello',
+    'path' => 'subscriptions',
     'middleware' => ['web'],
 ];

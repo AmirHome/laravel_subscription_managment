@@ -1,27 +1,42 @@
-# Hello World Laravel Package
+# Laravel Subscription Managment
 
-A simple Laravel package demonstrating package development best practices with configurable routes and middleware.
+laravel_subscription_managment is a flexible plan and subscription management system for Laravel, offering essential tools to efficiently run your SAAS-like services. With a simple architecture and robust foundation, it provides a solid platform to effortlessly manage plans and subscriptions.
 
 ## Installation
 
 ```bash
-composer require amirhome/hello_world
+composer require amirhome/laravel_subscription_managment
 ```
 
-## Configuration
+### Installation in laravel 11 manually
 
-Create a config file in your project:
+```json
+    "require": {
+
+        "amirhome/laravel_subscription_managment": "@dev"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/amirhome/laravel_subscription_managment"
+        }
+    ],
+```
+
+Publish files in your project:
 
 ```bash
-php artisan vendor:publish --provider="amirhome\HelloWorld\HelloWorldServiceProvider"
+php artisan vendor:publish --provider="amirhome\LaravelSubscriptionManagment\LaravelSubscriptionManagmentServiceProvider"
 
 ```
 
-## Testing to browser http://127.0.0.1:8000/hello
+## Testing to browser http://127.0.0.1:8000/subscriptions
 
 ```bash
-composer install
+composer update
+composer dump-autoload
 php artisan optimize:clear
+php artisan migrate
 php artisan route:list
 
 php artisan serve

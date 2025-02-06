@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('hello_worlds', function (Blueprint $table) {
+        Schema::create('laravel_subscription_managments', function (Blueprint $table) {
             $table->id();
             $table->string('message');
             $table->timestamps();
@@ -17,6 +17,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('hello_worlds');
+        Schema::dropIfExists('laravel_subscription_managments');
     }
 }; 

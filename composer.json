@@ -1,10 +1,10 @@
 {
-    "name": "amirhome/hello_world",
+    "name": "amirhome/laravel_subscription_managment",
     "description": "My own laravel package",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "amirhome\\HelloWorld\\": "src/"
+            "amirhome\\LaravelSubscriptionManagment\\": "src/"
         }
     },
     "authors": [
@@ -19,22 +19,22 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "amirhome\\HelloWorld\\Tests\\": "tests/"
+            "amirhome\\LaravelSubscriptionManagment\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "amirhome\\HelloWorld\\HelloWorldServiceProvider"
+                "amirhome\\LaravelSubscriptionManagment\\LaravelSubscriptionManagmentServiceProvider"
             ]
         }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "support": {
-        "issues": "https://github.com/amirhome/hello_world/issues",
-        "source": "https://github.com/amirhome/hello_world"
+        "issues": "https://github.com/amirhome/laravel_subscription_managment/issues",
+        "source": "https://github.com/amirhome/laravel_subscription_managment"
     },
-    "homepage": "https://github.com/amirhome/hello_world"
+    "homepage": "https://github.com/amirhome/laravel_subscription_managment"
 }
 
