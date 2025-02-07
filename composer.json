@@ -5,7 +5,10 @@
     "autoload": {
         "psr-4": {
             "amirhome\\LaravelSubscriptionManagment\\": "src/"
-        }
+        },
+        "files": [
+            "src/Helper/helpers.php"
+        ]
     },
     "authors": [
         {
@@ -35,6 +38,10 @@
         "issues": "https://github.com/amirhome/laravel_subscription_managment/issues",
         "source": "https://github.com/amirhome/laravel_subscription_managment"
     },
-    "homepage": "https://github.com/amirhome/laravel_subscription_managment"
+    "homepage": "https://github.com/amirhome/laravel_subscription_managment",
+    "require-dev": {
+        "larastan/larastan": "^3.0",
+        "laravel/pint": "^1.20",
+        "orchestra/testbench": "^9.9"
+    }
 }
-

@@ -20,6 +20,7 @@ class LaravelSubscriptionManagmentServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../resources/views' => resource_path('views/laravel_subscription_managment'),
         ], 'laravel_subscription_managment_views');
+
     }
     public function register()
     {
