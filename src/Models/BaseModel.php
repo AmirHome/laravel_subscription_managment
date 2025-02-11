@@ -16,6 +16,6 @@ class BaseModel extends Model
         $prefix = config('laravel_subscription_managment.table_prefix');
         $table = Str::snake(Str::pluralStudly(class_basename($this)));
 
-        return "{$prefix}_{$table}";
+        return "{$prefix}{$table}";
     }
 }

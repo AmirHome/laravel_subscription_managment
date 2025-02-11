@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Builder;
 
 class Group extends BaseModel
 {
+    protected $table = 'groups';
     protected $fillable = ['name', 'type'];
     protected $casts = [
         // 'type' => GroupTypeEnum::class,

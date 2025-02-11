@@ -1,0 +1,29 @@
+{
+	"info": {
+		"_postman_id": "41e71aa6-1c92-409c-bce6-d221ae75329e",
+		"name": "Subscriptions",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "605698"
+	},
+	"item": [
+		{
+			"name": "features",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/la-subscriptions/api/features",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"la-subscriptions",
+						"api",
+						"features"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
