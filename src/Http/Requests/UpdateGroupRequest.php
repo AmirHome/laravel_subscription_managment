@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Amirhome\LaravelSubscriptionManagment\Http\Requests; 
 
 use App\Models\Group;
 use Gate;
@@ -9,10 +9,10 @@ use Illuminate\Http\Response;
 
 class UpdateGroupRequest extends FormRequest
 {
-    public function authorize()
-    {
-        return Gate::allows('group_edit');
-    }
+    // public function authorize()
+    // {
+    //     return Gate::allows('group_edit');
+    // }
 
     public function rules()
     {

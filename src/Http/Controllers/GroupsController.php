@@ -66,14 +66,24 @@ class GroupsController extends Controller
         // return new GroupResource(Group::all());
     }
 
+    public function create()
+    {
+        // abort_if(Gate::denies('group_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $groupTypes = Group::TYPE_SELECT;
+
+        return view('laravel_subscription_managment::admin.groups.create', compact('groupTypes'));
+    }
+
     public function store(Request $request)
     {
-
         $group = Group::create($request->all());
 
-        return (new GroupResource($group))
-            ->response()
-            ->setStatusCode(Response::HTTP_CREATED);
+        return redirect()->route('ajax.groups.index');
+
+
+        // return (new GroupResource($group))
+        //     ->response()
+        //     ->setStatusCode(Response::HTTP_CREATED);
     }
 
     public function show(Group $group)
@@ -85,21 +95,33 @@ class GroupsController extends Controller
         // return new GroupResource($group);
     }
 
+    public function edit(Group $group)
+    {
+        // abort_if(Gate::denies('group_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $groupTypes = Group::TYPE_SELECT;
+        return view('laravel_subscription_managment::admin.groups.edit', compact('group','groupTypes'));
+    }
+
     public function update(UpdateGroupRequest $request, Group $group)
     {
         $group->update($request->all());
 
-        return (new GroupResource($group))
-            ->response()
-            ->setStatusCode(Response::HTTP_ACCEPTED);
+        return redirect()->route('ajax.groups.index');
+
+        // return (new GroupResource($group))
+        //     ->response()
+        //     ->setStatusCode(Response::HTTP_ACCEPTED);
     }
 
     public function destroy(Group $group)
     {
-        abort_if(Gate::denies('group_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // abort_if(Gate::denies('group_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $group->delete();
 
-        return response(null, Response::HTTP_NO_CONTENT);
+        return back();
+
+        // return response(null, Response::HTTP_NO_CONTENT);
     }
 }

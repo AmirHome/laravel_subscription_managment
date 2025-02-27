@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('laravel_subscription_managment::layouts.admin')
 @section('content')
 
 <div class="card">
@@ -7,7 +7,7 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.groups.store") }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route("ajax.groups.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label class="required" for="name">{{ trans('laravel_subscription_managment::cruds.group.fields.name') }}</label>
@@ -21,8 +21,8 @@
                 <label>{{ trans('laravel_subscription_managment::cruds.group.fields.type') }}</label>
                 <select class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" id="type">
                     <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('laravel_subscription_managment::global.pleaseSelect') }}</option>
-                    @foreach(App\Models\Group::TYPE_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('type', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @foreach($groupTypes as $key => $label)
+                        <option value="{{ $key }}" {{ old('type', '') === (string) $label ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('type'))
