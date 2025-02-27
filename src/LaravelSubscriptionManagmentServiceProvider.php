@@ -27,6 +27,7 @@ class LaravelSubscriptionManagmentServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/laravel_subscription_managment.php', 'laravel_subscription_managment');
         $this->loadRoutesFrom(__DIR__ . '/Http/Routes/web.php');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'laravel_subscription_managment');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'laravel_subscription_managment');
 
     }
 }

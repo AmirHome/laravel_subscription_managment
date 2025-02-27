@@ -1,4 +1,4 @@
 <div>
-    <h1>{{ $message }}</h1>
+    <h1>Header</h1>
     <p>Package working successfully!</p>
 </div> 

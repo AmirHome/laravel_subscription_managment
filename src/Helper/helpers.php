@@ -24,7 +24,7 @@ if (!function_exists('subscription')) {
 if (!function_exists('gracedEndDateColumn')) {
     function gracedEndDateColumn(): Illuminate\Contracts\Database\Query\Expression|string
     {
-        $graceDays = config('subscription.grace_period', 0);
+        $graceDays = config('laravel_subscription_managment.grace_period', 0);
         if ($graceDays > 0) {
             if (DB::getDriverName() === 'sqlite') {
                 return DB::raw(sprintf('date(end_at, "+%d days")', $graceDays));
@@ -45,13 +45,13 @@ if (!function_exists('carbonParse')) {
 }
 
 if (!function_exists('css')) {
-    function css(): Htmlable
+    function css($filename): Htmlable
     {
-        //        if (($light = @file_get_contents(__DIR__ . '/../../dist/styles.css')) === false) {
+        //        if (($light = @file_get_contents(__DIR__ . '/../../resources/styles.css')) === false) {
         //            throw new RuntimeException('Unable to load the dashboard light CSS.');
         //        }
 
-        if (($app = @file_get_contents(__DIR__ . '/../../dist/app.css')) === false) {
+        if (($app = @file_get_contents(__DIR__ . '/../../resources/css/'.$filename)) === false) {
             throw new RuntimeException('Unable to load the dashboard CSS.');
         }
 
@@ -62,14 +62,14 @@ if (!function_exists('css')) {
     }
 }
 if (!function_exists('js')) {
-    function js(): Htmlable
+    function js($filename): Htmlable
     {
-        if (($js = @file_get_contents(__DIR__ . '/../../dist/app.js')) === false) {
+        if (($js = @file_get_contents(__DIR__ . '/../../resources/js/'.$filename)) === false) {
             throw new RuntimeException('Unable to load the  dashboard JavaScript.');
         }
 
         $variable = Js::from([
-            'path' => config('subscription.path'),
+            'path' => config('laravel_subscription_managment.path'),
         ]);
 
         return new HtmlString(<<<HTML
