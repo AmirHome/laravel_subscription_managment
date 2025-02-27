@@ -79,312 +79,312 @@
 
                                     @can('user_management_access')
                                         <a class="dropdown-item disabled" href="#">
-                                            {{ trans('cruds.userManagement.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.userManagement.title') }}
                                         </a>
                                     @endcan
                                     @can('permission_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.permissions.index') }}">
-                                            {{ trans('cruds.permission.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.permission.title') }}
                                         </a>
                                     @endcan
                                     @can('role_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.roles.index') }}">
-                                            {{ trans('cruds.role.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.role.title') }}
                                         </a>
                                     @endcan
                                     @can('user_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.users.index') }}">
-                                            {{ trans('cruds.user.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.user.title') }}
                                         </a>
                                     @endcan
                                     @can('team_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.teams.index') }}">
-                                            {{ trans('cruds.team.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.team.title') }}
                                         </a>
                                     @endcan
                                     @can('user_profile_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.user-profiles.index') }}">
-                                            {{ trans('cruds.userProfile.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.userProfile.title') }}
                                         </a>
                                     @endcan
                                     @can('grant_management_access')
                                         <a class="dropdown-item disabled" href="#">
-                                            {{ trans('cruds.grantManagement.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.grantManagement.title') }}
                                         </a>
                                     @endcan
                                     @can('organization_type_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.organization-types.index') }}">
-                                            {{ trans('cruds.organizationType.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.organizationType.title') }}
                                         </a>
                                     @endcan
                                     @can('organization_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.organizations.index') }}">
-                                            {{ trans('cruds.organization.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.organization.title') }}
                                         </a>
                                     @endcan
                                     @can('grant_type_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.grant-types.index') }}">
-                                            {{ trans('cruds.grantType.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.grantType.title') }}
                                         </a>
                                     @endcan
                                     @can('grant_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.grants.index') }}">
-                                            {{ trans('cruds.grant.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.grant.title') }}
                                         </a>
                                     @endcan
                                     @can('grant_document_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.grant-documents.index') }}">
-                                            {{ trans('cruds.grantDocument.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.grantDocument.title') }}
                                         </a>
                                     @endcan
                                     @can('grant_tab_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.grant-tabs.index') }}">
-                                            {{ trans('cruds.grantTab.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.grantTab.title') }}
                                         </a>
                                     @endcan
                                     @can('company_management_access')
                                         <a class="dropdown-item disabled" href="#">
-                                            {{ trans('cruds.companyManagement.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.companyManagement.title') }}
                                         </a>
                                     @endcan
                                     @can('company_type_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.company-types.index') }}">
-                                            {{ trans('cruds.companyType.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.companyType.title') }}
                                         </a>
                                     @endcan
                                     @can('company_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.companies.index') }}">
-                                            {{ trans('cruds.company.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.company.title') }}
                                         </a>
                                     @endcan
                                     @can('feature_company_setting_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.feature-company-settings.index') }}">
-                                            {{ trans('cruds.featureCompanySetting.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.featureCompanySetting.title') }}
                                         </a>
                                     @endcan
                                     @can('report_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.reports.index') }}">
-                                            {{ trans('cruds.report.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.report.title') }}
                                         </a>
                                     @endcan
                                     @can('user_alert_access')
                                         <a class="dropdown-item" href="{{ route('frontend.user-alerts.index') }}">
-                                            {{ trans('cruds.userAlert.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.userAlert.title') }}
                                         </a>
                                     @endcan
                                     @can('feature_management_access')
                                         <a class="dropdown-item disabled" href="#">
-                                            {{ trans('cruds.featureManagement.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.featureManagement.title') }}
                                         </a>
                                     @endcan
                                     @can('feature_group_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.feature-groups.index') }}">
-                                            {{ trans('cruds.featureGroup.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.featureGroup.title') }}
                                         </a>
                                     @endcan
                                     @can('feature_type_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.feature-types.index') }}">
-                                            {{ trans('cruds.featureType.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.featureType.title') }}
                                         </a>
                                     @endcan
                                     @can('feature_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.features.index') }}">
-                                            {{ trans('cruds.feature.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.feature.title') }}
                                         </a>
                                     @endcan
                                     @can('feature_value_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.feature-values.index') }}">
-                                            {{ trans('cruds.featureValue.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.featureValue.title') }}
                                         </a>
                                     @endcan
                                     @can('faq_management_access')
                                         <a class="dropdown-item disabled" href="#">
-                                            {{ trans('cruds.faqManagement.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.faqManagement.title') }}
                                         </a>
                                     @endcan
                                     @can('faq_category_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.faq-categories.index') }}">
-                                            {{ trans('cruds.faqCategory.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.faqCategory.title') }}
                                         </a>
                                     @endcan
                                     @can('faq_question_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.faq-questions.index') }}">
-                                            {{ trans('cruds.faqQuestion.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.faqQuestion.title') }}
                                         </a>
                                     @endcan
                                     @can('basic_access')
                                         <a class="dropdown-item disabled" href="#">
-                                            {{ trans('cruds.basic.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.basic.title') }}
                                         </a>
                                     @endcan
                                     @can('country_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.countries.index') }}">
-                                            {{ trans('cruds.country.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.country.title') }}
                                         </a>
                                     @endcan
                                     @can('city_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.cities.index') }}">
-                                            {{ trans('cruds.city.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.city.title') }}
                                         </a>
                                     @endcan
                                     @can('setting_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.settings.index') }}">
-                                            {{ trans('cruds.setting.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.setting.title') }}
                                         </a>
                                     @endcan
                                     @can('content_management_access')
                                         <a class="dropdown-item disabled" href="#">
-                                            {{ trans('cruds.contentManagement.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.contentManagement.title') }}
                                         </a>
                                     @endcan
                                     @can('content_category_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.content-categories.index') }}">
-                                            {{ trans('cruds.contentCategory.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.contentCategory.title') }}
                                         </a>
                                     @endcan
                                     @can('content_tag_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.content-tags.index') }}">
-                                            {{ trans('cruds.contentTag.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.contentTag.title') }}
                                         </a>
                                     @endcan
                                     @can('content_page_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.content-pages.index') }}">
-                                            {{ trans('cruds.contentPage.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.contentPage.title') }}
                                         </a>
                                     @endcan
                                     @can('card_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.cards.index') }}">
-                                            {{ trans('cruds.card.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.card.title') }}
                                         </a>
                                     @endcan
                                     @can('basic_c_r_m_access')
                                         <a class="dropdown-item disabled" href="#">
-                                            {{ trans('cruds.basicCRM.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.basicCRM.title') }}
                                         </a>
                                     @endcan
                                     @can('crm_status_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.crm-statuses.index') }}">
-                                            {{ trans('cruds.crmStatus.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.crmStatus.title') }}
                                         </a>
                                     @endcan
                                     @can('crm_customer_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.crm-customers.index') }}">
-                                            {{ trans('cruds.crmCustomer.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.crmCustomer.title') }}
                                         </a>
                                     @endcan
                                     @can('crm_note_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.crm-notes.index') }}">
-                                            {{ trans('cruds.crmNote.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.crmNote.title') }}
                                         </a>
                                     @endcan
                                     @can('crm_document_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.crm-documents.index') }}">
-                                            {{ trans('cruds.crmDocument.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.crmDocument.title') }}
                                         </a>
                                     @endcan
                                     @can('client_management_setting_access')
                                         <a class="dropdown-item disabled" href="#">
-                                            {{ trans('cruds.clientManagementSetting.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.clientManagementSetting.title') }}
                                         </a>
                                     @endcan
                                     @can('currency_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.currencies.index') }}">
-                                            {{ trans('cruds.currency.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.currency.title') }}
                                         </a>
                                     @endcan
                                     @can('transaction_type_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.transaction-types.index') }}">
-                                            {{ trans('cruds.transactionType.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.transactionType.title') }}
                                         </a>
                                     @endcan
                                     @can('income_source_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.income-sources.index') }}">
-                                            {{ trans('cruds.incomeSource.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.incomeSource.title') }}
                                         </a>
                                     @endcan
                                     @can('client_status_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.client-statuses.index') }}">
-                                            {{ trans('cruds.clientStatus.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.clientStatus.title') }}
                                         </a>
                                     @endcan
                                     @can('project_status_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.project-statuses.index') }}">
-                                            {{ trans('cruds.projectStatus.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.projectStatus.title') }}
                                         </a>
                                     @endcan
                                     @can('client_management_access')
                                         <a class="dropdown-item disabled" href="#">
-                                            {{ trans('cruds.clientManagement.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.clientManagement.title') }}
                                         </a>
                                     @endcan
                                     @can('client_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.clients.index') }}">
-                                            {{ trans('cruds.client.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.client.title') }}
                                         </a>
                                     @endcan
                                     @can('project_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.projects.index') }}">
-                                            {{ trans('cruds.project.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.project.title') }}
                                         </a>
                                     @endcan
                                     @can('note_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.notes.index') }}">
-                                            {{ trans('cruds.note.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.note.title') }}
                                         </a>
                                     @endcan
                                     @can('document_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.documents.index') }}">
-                                            {{ trans('cruds.document.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.document.title') }}
                                         </a>
                                     @endcan
                                     @can('transaction_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.transactions.index') }}">
-                                            {{ trans('cruds.transaction.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.transaction.title') }}
                                         </a>
                                     @endcan
                                     @can('slider_management_access')
                                         <a class="dropdown-item disabled" href="#">
-                                            {{ trans('cruds.sliderManagement.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.sliderManagement.title') }}
                                         </a>
                                     @endcan
                                     @can('slider_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.sliders.index') }}">
-                                            {{ trans('cruds.slider.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.slider.title') }}
                                         </a>
                                     @endcan
                                     @can('slider_item_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.slider-items.index') }}">
-                                            {{ trans('cruds.sliderItem.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.sliderItem.title') }}
                                         </a>
                                     @endcan
                                     @can('new_menu_access')
                                         <a class="dropdown-item disabled" href="#">
-                                            {{ trans('cruds.newMenu.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.newMenu.title') }}
                                         </a>
                                     @endcan
                                     @can('group_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.groups.index') }}">
-                                            {{ trans('cruds.group.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.group.title') }}
                                         </a>
                                     @endcan
                                     @can('product_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.products.index') }}">
-                                            {{ trans('cruds.product.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.product.title') }}
                                         </a>
                                     @endcan
                                     @can('xfeatue_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.xfeatues.index') }}">
-                                            {{ trans('cruds.xfeatue.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.xfeatue.title') }}
                                         </a>
                                     @endcan
                                     @can('product_feature_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.product-features.index') }}">
-                                            {{ trans('cruds.productFeature.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.productFeature.title') }}
                                         </a>
                                     @endcan
                                     @can('subscription_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.subscriptions.index') }}">
-                                            {{ trans('cruds.subscription.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.subscription.title') }}
                                         </a>
                                     @endcan
 

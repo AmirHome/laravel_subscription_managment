@@ -62,6 +62,8 @@ class GroupsController extends Controller
 
         }
         return view('laravel_subscription_managment::admin.groups.index');
+
+        // return new GroupResource(Group::all());
     }
 
     public function store(Request $request)
@@ -76,9 +78,11 @@ class GroupsController extends Controller
 
     public function show(Group $group)
     {
-        abort_if(Gate::denies('group_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // abort_if(Gate::denies('group_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new GroupResource($group);
+        return view('laravel_subscription_managment::admin.groups.show', compact('group'));
+
+        // return new GroupResource($group);
     }
 
     public function update(UpdateGroupRequest $request, Group $group)

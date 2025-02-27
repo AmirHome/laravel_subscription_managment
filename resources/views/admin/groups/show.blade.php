@@ -1,23 +1,23 @@
-@extends('layouts.admin')
+@extends('laravel_subscription_managment::layouts.admin')
 @section('content')
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.group.title') }}
+        {{ trans('laravel_subscription_managment::global.show') }} {{ trans('laravel_subscription_managment::cruds.group.title') }}
     </div>
 
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
                 <a class="btn btn-default" href="{{ route('ajax.groups.index') }}">
-                    {{ trans('global.back_to_list') }}
+                    {{ trans('laravel_subscription_managment::global.back_to_list') }}
                 </a>
             </div>
             <table class="table table-bordered table-striped">
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.group.fields.id') }}
+                            {{ trans('laravel_subscription_managment::cruds.group.fields.id') }}
                         </th>
                         <td>
                             {{ $group->id }}
@@ -25,7 +25,7 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.group.fields.name') }}
+                            {{ trans('laravel_subscription_managment::cruds.group.fields.name') }}
                         </th>
                         <td>
                             {{ $group->name }}
@@ -33,17 +33,17 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.group.fields.type') }}
+                            {{ trans('laravel_subscription_managment::cruds.group.fields.type') }}
                         </th>
                         <td>
-                            {{ App\Models\Group::TYPE_SELECT[$group->type] ?? '' }}
+                            {{ $group->type ?? '' }}
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div class="form-group">
                 <a class="btn btn-default" href="{{ route('ajax.groups.index') }}">
-                    {{ trans('global.back_to_list') }}
+                    {{ trans('laravel_subscription_managment::global.back_to_list') }}
                 </a>
             </div>
         </div>
