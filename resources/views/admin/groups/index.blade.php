@@ -18,9 +18,6 @@
         <table class=" table table-bordered table-striped table-hover ajaxTable datatable datatable-Group">
             <thead>
                 <tr>
-                    <th width="10">
-
-                    </th>
                     <th>
                         {{ trans('laravel_subscription_managment::cruds.group.fields.id') }}
                     </th>
@@ -47,35 +44,6 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('group_delete')
-  let deleteButtonTrans = '{{ trans('laravel_subscription_managment::global.datatables.delete') }}';
-  let deleteButton = {
-    text: deleteButtonTrans,
-    url: "{{ route('ajax.groups.massDestroy') }}",
-    className: 'btn-danger',
-    action: function (e, dt, node, config) {
-      var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
-          return entry.id
-      });
-
-      if (ids.length === 0) {
-        alert('{{ trans('laravel_subscription_managment::global.datatables.zero_selected') }}')
-
-        return
-      }
-
-      if (confirm('{{ trans('laravel_subscription_managment::global.areYouSure') }}')) {
-        $.ajax({
-          headers: {'x-csrf-token': _token},
-          method: 'POST',
-          url: config.url,
-          data: { ids: ids, _method: 'DELETE' }})
-          .done(function () { location.reload() })
-      }
-    }
-  }
-  dtButtons.push(deleteButton)
-@endcan
 
   let dtOverrideGlobals = {
     buttons: dtButtons,
@@ -85,7 +53,6 @@
     aaSorting: [],
     ajax: "{{ route('ajax.groups.index') }}",
     columns: [
-      { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'type', name: 'type' },

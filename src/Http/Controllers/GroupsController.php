@@ -28,7 +28,6 @@ class GroupsController extends Controller
             $query = Group::query()->select(sprintf('%s.*', (new Group)->getTable()));
             $table = Datatables::of($query);
 
-            $table->addColumn('placeholder', '&nbsp;');
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
