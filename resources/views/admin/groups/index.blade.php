@@ -3,7 +3,7 @@
 @can('group_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.groups.create') }}">
+            <a class="btn btn-success" href="{{ route('ajax.groups.create') }}">
                 {{ trans('laravel_subscription_managment::global.add') }} {{ trans('laravel_subscription_managment::cruds.group.title_singular') }}
             </a>
         </div>
@@ -51,7 +51,7 @@
   let deleteButtonTrans = '{{ trans('laravel_subscription_managment::global.datatables.delete') }}';
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.groups.massDestroy') }}",
+    url: "{{ route('ajax.groups.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
@@ -83,7 +83,7 @@
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: "{{ route('admin.groups.index') }}",
+    ajax: "{{ route('ajax.groups.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },
