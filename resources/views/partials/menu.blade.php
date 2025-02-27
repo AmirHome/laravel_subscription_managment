@@ -4,7 +4,11 @@
         <span class="brand-text font-weight-light">{{ trans('laravel_subscription_managment::panel.site_title') }}</span>
     </a>
 
-    <!-- Sidebar -->
+    @php
+        $path = config('laravel_subscription_managment.path');
+    @endphp
+
+<!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user (optional) -->
 
@@ -13,9 +17,9 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 {{-- @can('user_management_access') --}}
-                    <li class="nav-item has-treeview {{ request()->is("admin/permissions*") ? "menu-open" : "" }} {{ request()->is("admin/roles*") ? "menu-open" : "" }} {{ request()->is("admin/users*") ? "menu-open" : "" }} {{ request()->is("admin/teams*") ? "menu-open" : "" }} {{ request()->is("admin/user-profiles*") ? "menu-open" : "" }}">
-                        <a class="nav-link nav-dropdown-toggle {{ request()->is("admin/permissions*") ? "active" : "" }} {{ request()->is("admin/roles*") ? "active" : "" }} {{ request()->is("admin/users*") ? "active" : "" }} {{ request()->is("admin/teams*") ? "active" : "" }} {{ request()->is("admin/user-profiles*") ? "active" : "" }}" href="#">
-                            <i class="fa-fw nav-icon fas fa-users">
+                    <li class="nav-item has-treeview {{ request()->is("$path/permissions*") ? "menu-open" : "" }} {{ request()->is("$path/roles*") ? "menu-open" : "" }} {{ request()->is("$path/groups*") ? "menu-open" : "" }} {{ request()->is("$path/teams*") ? "menu-open" : "" }} {{ request()->is("$path/user-profiles*") ? "menu-open" : "" }}">
+                        <a class="nav-link nav-dropdown-toggle {{ request()->is("$path/permissions*") ? "active" : "" }} {{ request()->is("$path/roles*") ? "active" : "" }} {{ request()->is("$path/groups*") ? "active" : "" }} {{ request()->is("$path/teams*") ? "active" : "" }} {{ request()->is("$path/user-profiles*") ? "active" : "" }}" href="#">
+                            <i class="fa-fw nav-icon fas fa-puzzle-piece">
 
                             </i>
                             <p>
@@ -25,18 +29,18 @@
                         </a>
                         <ul class="nav nav-treeview">
                             
-                            @can('group_access')
+                            {{-- @can('group_access') --}}
                                 <li class="nav-item">
-                                    <a href="{{ route("ajax.users.index") }}" class="nav-link {{ request()->is("admin/users") || request()->is("admin/users/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-user">
+                                    <a href="{{ route("ajax.groups.index") }}" class="nav-link {{ request()->is("$path/groups") || request()->is("$path/groups/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-layer-group">
 
                                         </i>
                                         <p>
-                                            {{ trans('laravel_subscription_managment::cruds.user.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.group.title') }}
                                         </p>
                                     </a>
                                 </li>
-                            @endcan
+                            {{-- @endcan --}}
                            
                         </ul>
                     </li>
