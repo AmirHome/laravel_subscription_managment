@@ -19,13 +19,13 @@
 
                             </i>
                             <p>
-                                {{ trans('laravel_subscription_managment::cruds.userManagement.title') }}
+                                {{ trans('laravel_subscription_managment::cruds.general.title') }}
                                 <i class="right fa fa-fw fa-angle-left nav-icon"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             
-                            @can('user_access')
+                            @can('group_access')
                                 <li class="nav-item">
                                     <a href="{{ route("admin.users.index") }}" class="nav-link {{ request()->is("admin/users") || request()->is("admin/users/*") ? "active" : "" }}">
                                         <i class="fa-fw nav-icon fas fa-user">

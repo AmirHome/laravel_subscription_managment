@@ -1219,9 +1219,9 @@ return [
             'product_helper'         => ' ',
         ],
     ],
-    'newMenu' => [
-        'title'          => 'New Menu',
-        'title_singular' => 'New Menu',
+    'general' => [
+        'title'          => 'General',
+        'title_singular' => 'General',
     ],
 
 ];
