@@ -55,7 +55,7 @@ class GroupsController extends Controller
                 return $row->type ;
             });
 
-            $table->rawColumns(['actions', 'placeholder']);
+            $table->rawColumns(['actions']);
 
             return $table->make(true);
 
