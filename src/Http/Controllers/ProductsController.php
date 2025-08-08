@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace Amirhome\LaravelSubscriptionManagment\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroyProductRequest;
-use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateProductRequest;
-use App\Models\Group;
-use App\Models\Product;
+use Amirhome\LaravelSubscriptionManagment\Http\Controllers\Controller;
+use Amirhome\LaravelSubscriptionManagment\Http\Requests\MassDestroyProductRequest;
+use Amirhome\LaravelSubscriptionManagment\Http\Requests\StoreProductRequest;
+use Amirhome\LaravelSubscriptionManagment\Http\Requests\UpdateProductRequest;
+use Amirhome\LaravelSubscriptionManagment\Models\Group;
+use Amirhome\LaravelSubscriptionManagment\Models\Product;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,10 +17,10 @@ class ProductsController extends Controller
 {
     public function index(Request $request)
     {
-        abort_if(Gate::denies('product_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        // abort_if(Gate::denies('product_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Product::with(['group'])->select(sprintf('%s.*', (new Product)->table));
+            $query = Product::with(['group'])->select(sprintf('%s.*', (new Product)->getTable()));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -32,7 +32,7 @@ class ProductsController extends Controller
                 $deleteGate    = 'product_delete';
                 $crudRoutePart = 'products';
 
-                return view('partials.datatablesActions', compact(
+                return view('laravel_subscription_managment::partials.datatablesActions', compact(
                     'viewGate',
                     'editGate',
                     'deleteGate',
@@ -53,12 +53,8 @@ class ProductsController extends Controller
             $table->addColumn('group_name', function ($row) {
                 return $row->group ? $row->group->name : '';
             });
-
-            $table->editColumn('group.type', function ($row) {
-                return $row->group ? (is_string($row->group) ? $row->group : $row->group->type) : '';
-            });
             $table->editColumn('active', function ($row) {
-                return $row->active ? Product::ACTIVE_SELECT[$row->active] : '';
+                return $row->active ? 'Yes' : 'No';
             });
             $table->editColumn('price', function ($row) {
                 return $row->price ? $row->price : '';
@@ -66,64 +62,60 @@ class ProductsController extends Controller
             $table->editColumn('price_yearly', function ($row) {
                 return $row->price_yearly ? $row->price_yearly : '';
             });
-            $table->editColumn('concurrency', function ($row) {
-                return $row->concurrency ? Product::CONCURRENCY_RADIO[$row->concurrency] : '';
-            });
-
-            $table->rawColumns(['actions', 'placeholder', 'group']);
+            $table->rawColumns(['actions']);
 
             return $table->make(true);
         }
 
-        return view('admin.products.index');
+    return view('laravel_subscription_managment::admin.products.index');
     }
 
     public function create()
     {
-        abort_if(Gate::denies('product_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+    // abort_if(Gate::denies('product_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $groups = Group::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.products.create', compact('groups'));
+    return view('laravel_subscription_managment::admin.products.create', compact('groups'));
     }
 
     public function store(StoreProductRequest $request)
     {
         $product = Product::create($request->all());
 
-        return redirect()->route('admin.products.index');
+    return redirect()->route('ajax.products.index');
     }
 
     public function edit(Product $product)
     {
-        abort_if(Gate::denies('product_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+    // abort_if(Gate::denies('product_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $groups = Group::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $product->load('group');
 
-        return view('admin.products.edit', compact('groups', 'product'));
+    return view('laravel_subscription_managment::admin.products.edit', compact('groups', 'product'));
     }
 
     public function update(UpdateProductRequest $request, Product $product)
     {
         $product->update($request->all());
 
-        return redirect()->route('admin.products.index');
+    return redirect()->route('ajax.products.index');
     }
 
     public function show(Product $product)
     {
-        abort_if(Gate::denies('product_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+    // abort_if(Gate::denies('product_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $product->load('group');
 
-        return view('admin.products.show', compact('product'));
+    return view('laravel_subscription_managment::admin.products.show', compact('product'));
     }
 
     public function destroy(Product $product)
     {
-        abort_if(Gate::denies('product_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+    // abort_if(Gate::denies('product_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $product->delete();
 

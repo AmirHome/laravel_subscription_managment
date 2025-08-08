@@ -1,45 +1,53 @@
 <?php
 
-namespace Amirhome\LaravelSubscriptionManagment\Models;
+namespace App\Models;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use DateTimeInterface;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * @property ?Group $group
- */
-class Feature extends BaseModel
+class SubscriptionFeature extends Model
 {
-    protected $fillable = ['name', 'code', 'description', 'group_id', 'active', 'limited'];
-    protected $casts = [
-        'limited' => 'bool',
-        'active' => 'bool',
+    use SoftDeletes, HasFactory;
+
+    public $table = 'subscription_features';
+
+    public const LIMITED_SELECT = [
+        '0' => 'NO',
+        '1' => 'YES',
     ];
 
-    public function group(): BelongsTo
+    public const ACTIVE_SELECT = [
+        '1' => 'Active',
+        '0' => 'Passive',
+    ];
+
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    protected $fillable = [
+        'name',
+        'code',
+        'description',
+        'group_id',
+        'active',
+        'limited',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    protected function serializeDate(DateTimeInterface $date)
     {
-        return $this->belongsTo(Group::class)->withDefault(function (Group $group) {
-            $group->setAttribute('name', 'Others');
-        });
+        return $date->format('Y-m-d H:i:s');
     }
 
-    public function isConsumable(): bool
+    public function group()
     {
-        return (bool)$this->limited;
-    }
-
-    public function isActive(): bool
-    {
-        return (bool)$this->active;
-    }
-
-    public function scopeActive(Builder $query): Builder
-    {
-        return $query->where('active', true);
-    }
-
-    public function scopeSearch(Builder $query, string $keyword): Builder
-    {
-        return $query->whereAny(['name', 'description'], "like", "%$keyword%");
+        return $this->belongsTo(SubscriptionGroup::class, 'group_id');
     }
 }

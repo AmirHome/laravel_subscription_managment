@@ -117,7 +117,8 @@ return new class extends Migration
     public function down(): void
     {
         $prefix = config('laravel_subscription_managment.table_prefix');
-        Schema::dropIfExists("{$prefix}subscription_consumptions");
+        Schema::dropIfExists("{$prefix}feature_consumptions");
+        Schema::dropIfExists("{$prefix}subscription_quotas");
         Schema::dropIfExists("{$prefix}contract_transactions");
         Schema::dropIfExists("{$prefix}subscription_contracts");
         Schema::dropIfExists("{$prefix}subscriptions");

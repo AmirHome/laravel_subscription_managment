@@ -4,7 +4,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "amirhome\\LaravelSubscriptionManagment\\": "src/"
+            "Amirhome\\LaravelSubscriptionManagment\\": "src/"
         },
         "files": [
             "src/Helper/helpers.php"
@@ -23,13 +23,13 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "amirhome\\LaravelSubscriptionManagment\\Tests\\": "tests/"
+            "Amirhome\\LaravelSubscriptionManagment\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "amirhome\\LaravelSubscriptionManagment\\LaravelSubscriptionManagmentServiceProvider"
+                "Amirhome\\LaravelSubscriptionManagment\\LaravelSubscriptionManagmentServiceProvider"
             ]
         }
     },

@@ -1,6 +1,6 @@
 <?php
 
-namespace amirhome\LaravelSubscriptionManagment;
+namespace Amirhome\LaravelSubscriptionManagment;
 
 
 use Illuminate\Support\ServiceProvider;

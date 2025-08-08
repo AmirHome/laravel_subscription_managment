@@ -30,7 +30,7 @@ Publish files in your project:
 
 ```bash
 
-php artisan vendor:publish --provider="amirhome\LaravelSubscriptionManagment\LaravelSubscriptionManagmentServiceProvider" --force
+php artisan vendor:publish --provider="Amirhome\\LaravelSubscriptionManagment\\LaravelSubscriptionManagmentServiceProvider" --force
 
 composer update
 composer dump-autoload

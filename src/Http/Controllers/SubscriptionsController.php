@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace Amirhome\LaravelSubscriptionManagment\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\MassDestroySubscriptionRequest;
-use App\Http\Requests\StoreSubscriptionRequest;
-use App\Http\Requests\UpdateSubscriptionRequest;
-use App\Models\Product;
-use App\Models\Subscription;
+use Amirhome\LaravelSubscriptionManagment\Http\Controllers\Controller;
+use Amirhome\LaravelSubscriptionManagment\Http\Requests\MassDestroySubscriptionRequest;
+use Amirhome\LaravelSubscriptionManagment\Http\Requests\StoreSubscriptionRequest;
+use Amirhome\LaravelSubscriptionManagment\Http\Requests\UpdateSubscriptionRequest;
+use Amirhome\LaravelSubscriptionManagment\Models\Product;
+use Amirhome\LaravelSubscriptionManagment\Models\Subscription;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,10 +17,10 @@ class SubscriptionsController extends Controller
 {
     public function index(Request $request)
     {
-        abort_if(Gate::denies('subscription_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+    // abort_if(Gate::denies('subscription_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Subscription::with(['product'])->select(sprintf('%s.*', (new Subscription)->table));
+            $query = Subscription::with(['product'])->select(sprintf('%s.*', (new Subscription)->getTable()));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -32,7 +32,7 @@ class SubscriptionsController extends Controller
                 $deleteGate    = 'subscription_delete';
                 $crudRoutePart = 'subscriptions';
 
-                return view('partials.datatablesActions', compact(
+                return view('laravel_subscription_managment::partials.datatablesActions', compact(
                     'viewGate',
                     'editGate',
                     'deleteGate',
@@ -45,7 +45,7 @@ class SubscriptionsController extends Controller
                 return $row->id ? $row->id : '';
             });
             $table->editColumn('unlimited', function ($row) {
-                return $row->unlimited ? Subscription::UNLIMITED_SELECT[$row->unlimited] : '';
+                return $row->unlimited ? 'Yes' : 'No';
             });
 
             $table->rawColumns(['actions', 'placeholder']);
@@ -53,55 +53,55 @@ class SubscriptionsController extends Controller
             return $table->make(true);
         }
 
-        return view('admin.subscriptions.index');
+    return view('laravel_subscription_managment::admin.subscriptions.index');
     }
 
     public function create()
     {
-        abort_if(Gate::denies('subscription_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+    // abort_if(Gate::denies('subscription_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $products = Product::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.subscriptions.create', compact('products'));
+    return view('laravel_subscription_managment::admin.subscriptions.create', compact('products'));
     }
 
     public function store(StoreSubscriptionRequest $request)
     {
         $subscription = Subscription::create($request->all());
 
-        return redirect()->route('admin.subscriptions.index');
+    return redirect()->route('ajax.subscriptions.index');
     }
 
     public function edit(Subscription $subscription)
     {
-        abort_if(Gate::denies('subscription_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+    // abort_if(Gate::denies('subscription_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $products = Product::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $subscription->load('product');
 
-        return view('admin.subscriptions.edit', compact('products', 'subscription'));
+    return view('laravel_subscription_managment::admin.subscriptions.edit', compact('products', 'subscription'));
     }
 
     public function update(UpdateSubscriptionRequest $request, Subscription $subscription)
     {
         $subscription->update($request->all());
 
-        return redirect()->route('admin.subscriptions.index');
+    return redirect()->route('ajax.subscriptions.index');
     }
 
     public function show(Subscription $subscription)
     {
-        abort_if(Gate::denies('subscription_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+    // abort_if(Gate::denies('subscription_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $subscription->load('product');
 
-        return view('admin.subscriptions.show', compact('subscription'));
+    return view('laravel_subscription_managment::admin.subscriptions.show', compact('subscription'));
     }
 
     public function destroy(Subscription $subscription)
     {
-        abort_if(Gate::denies('subscription_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+    // abort_if(Gate::denies('subscription_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $subscription->delete();
 
