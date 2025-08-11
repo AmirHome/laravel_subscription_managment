@@ -4,14 +4,14 @@
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route('ajax.groups.create') }}">
-                {{ trans('laravel_subscription_managment::global.add') }} {{ trans('laravel_subscription_managment::cruds.group.title_singular') }}
+                {{ trans('laravel_subscription_managment::global.add') }} {{ trans('laravel_subscription_managment::cruds.subscriptionGroup.title_singular') }}
             </a>
         </div>
     </div>
 {{-- @endcan --}}
 <div class="card">
     <div class="card-header">
-         {{ trans('laravel_subscription_managment::cruds.group.title_singular') }} {{ trans('laravel_subscription_managment::global.list') }}
+         {{ trans('laravel_subscription_managment::cruds.subscriptionGroup.title_singular') }} {{ trans('laravel_subscription_managment::global.list') }}
     </div>
 
     <div class="card-body">
@@ -19,13 +19,13 @@
             <thead>
                 <tr>
                     <th>
-                        {{ trans('laravel_subscription_managment::cruds.group.fields.id') }}
+                        {{ trans('laravel_subscription_managment::cruds.subscriptionGroup.fields.id') }}
                     </th>
                     <th>
-                        {{ trans('laravel_subscription_managment::cruds.group.fields.name') }}
+                        {{ trans('laravel_subscription_managment::cruds.subscriptionGroup.fields.name') }}
                     </th>
                     <th>
-                        {{ trans('laravel_subscription_managment::cruds.group.fields.type') }}
+                        {{ trans('laravel_subscription_managment::cruds.subscriptionGroup.fields.type') }}
                     </th>
                     <th>
                         &nbsp;

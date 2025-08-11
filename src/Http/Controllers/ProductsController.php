@@ -74,7 +74,7 @@ class ProductsController extends Controller
     {
     // abort_if(Gate::denies('product_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $groups = Group::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $groups = Group::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
 
     return view('laravel_subscription_managment::admin.products.create', compact('groups'));
     }
@@ -90,7 +90,7 @@ class ProductsController extends Controller
     {
     // abort_if(Gate::denies('product_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $groups = Group::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $groups = Group::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
 
         $product->load('group');
 

@@ -1,23 +1,22 @@
 <?php
 
-namespace App\Models;
+namespace Amirhome\LaravelSubscriptionManagment\Models;
 
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class SubscriptionFeature extends Model
+class Feature extends BaseModel
 {
     use SoftDeletes, HasFactory;
 
-    public $table = 'subscription_features';
+    protected $table = 'features';
 
     public const LIMITED_SELECT = [
         '0' => 'NO',
         '1' => 'YES',
     ];
-
     public const ACTIVE_SELECT = [
         '1' => 'Active',
         '0' => 'Passive',
@@ -36,9 +35,6 @@ class SubscriptionFeature extends Model
         'group_id',
         'active',
         'limited',
-        'created_at',
-        'updated_at',
-        'deleted_at',
     ];
 
     protected function serializeDate(DateTimeInterface $date)
@@ -48,6 +44,6 @@ class SubscriptionFeature extends Model
 
     public function group()
     {
-        return $this->belongsTo(SubscriptionGroup::class, 'group_id');
+        return $this->belongsTo(Group::class, 'group_id');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\SubscriptionFeature;
+use App\Models\Feature;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;

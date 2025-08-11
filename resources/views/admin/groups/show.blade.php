@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('laravel_subscription_managment::global.show') }} {{ trans('laravel_subscription_managment::cruds.group.title') }}
+        {{ trans('laravel_subscription_managment::global.show') }} {{ trans('laravel_subscription_managment::cruds.subscriptionGroup.title') }}
     </div>
 
     <div class="card-body">
@@ -17,7 +17,7 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('laravel_subscription_managment::cruds.group.fields.id') }}
+                            {{ trans('laravel_subscription_managment::cruds.subscriptionGroup.fields.id') }}
                         </th>
                         <td>
                             {{ $group->id }}
@@ -25,7 +25,7 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('laravel_subscription_managment::cruds.group.fields.name') }}
+                            {{ trans('laravel_subscription_managment::cruds.subscriptionGroup.fields.name') }}
                         </th>
                         <td>
                             {{ $group->name }}
@@ -33,7 +33,7 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('laravel_subscription_managment::cruds.group.fields.type') }}
+                            {{ trans('laravel_subscription_managment::cruds.subscriptionGroup.fields.type') }}
                         </th>
                         <td>
                             {{ $group->type ?? '' }}

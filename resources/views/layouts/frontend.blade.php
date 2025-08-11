@@ -159,7 +159,7 @@
                                     @endcan
                                     @can('feature_company_setting_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.feature-company-settings.index') }}">
-                                            {{ trans('laravel_subscription_managment::cruds.featureCompanySetting.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.subscriptionFeatureCompanySetting.title') }}
                                         </a>
                                     @endcan
                                     @can('report_access')
@@ -174,27 +174,27 @@
                                     @endcan
                                     @can('feature_management_access')
                                         <a class="dropdown-item disabled" href="#">
-                                            {{ trans('laravel_subscription_managment::cruds.featureManagement.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.subscriptionFeatureManagement.title') }}
                                         </a>
                                     @endcan
                                     @can('feature_group_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.feature-groups.index') }}">
-                                            {{ trans('laravel_subscription_managment::cruds.featureGroup.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.subscriptionFeatureGroup.title') }}
                                         </a>
                                     @endcan
                                     @can('feature_type_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.feature-types.index') }}">
-                                            {{ trans('laravel_subscription_managment::cruds.featureType.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.subscriptionFeatureType.title') }}
                                         </a>
                                     @endcan
                                     @can('feature_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.features.index') }}">
-                                            {{ trans('laravel_subscription_managment::cruds.feature.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.subscriptionFeature.title') }}
                                         </a>
                                     @endcan
                                     @can('feature_value_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.feature-values.index') }}">
-                                            {{ trans('laravel_subscription_managment::cruds.featureValue.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.subscriptionFeatureValue.title') }}
                                         </a>
                                     @endcan
                                     @can('faq_management_access')
@@ -364,7 +364,7 @@
                                     @endcan
                                     @can('group_access')
                                         <a class="dropdown-item ml-3" href="{{ route('frontend.groups.index') }}">
-                                            {{ trans('laravel_subscription_managment::cruds.group.title') }}
+                                            {{ trans('laravel_subscription_managment::cruds.subscriptionGroup.title') }}
                                         </a>
                                     @endcan
                                     @can('product_access')

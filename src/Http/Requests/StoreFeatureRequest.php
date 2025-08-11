@@ -2,12 +2,12 @@
 
 namespace App\Http\Requests;
 
-use App\Models\SubscriptionFeature;
+use App\Models\Feature;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
 
-class StoreSubscriptionFeatureRequest extends FormRequest
+class StoreFeatureRequest extends FormRequest
 {
     public function authorize()
     {

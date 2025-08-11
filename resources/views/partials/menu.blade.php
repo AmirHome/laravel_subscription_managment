@@ -28,20 +28,26 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            
                             {{-- @can('group_access') --}}
-                                <li class="nav-item">
-                                    <a href="{{ route("ajax.groups.index") }}" class="nav-link {{ request()->is("$path/groups") || request()->is("$path/groups/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-layer-group">
-
-                                        </i>
-                                        <p>
-                                            {{ trans('laravel_subscription_managment::cruds.group.title') }}
-                                        </p>
-                                    </a>
-                                </li>
+                            <li class="nav-item">
+                                <a href="{{ route("ajax.groups.index") }}" class="nav-link {{ request()->is("$path/groups") || request()->is("$path/groups/*") ? "active" : "" }}">
+                                    <i class="fa-fw nav-icon fas fa-layer-group"></i>
+                                    <p>
+                                        {{ trans('laravel_subscription_managment::cruds.subscriptionGroup.title') }}
+                                    </p>
+                                </a>
+                            </li>
                             {{-- @endcan --}}
-                           
+                            {{-- @can('feature_access') --}}
+                            <li class="nav-item">
+                                <a href="{{ route('ajax.features.index') }}" class="nav-link {{ request()->is("$path/features") || request()->is("$path/features/*") ? "active" : "" }}">
+                                    <i class="fa-fw nav-icon fas fa-star"></i>
+                                    <p>
+                                        {{ trans('laravel_subscription_managment::cruds.subscriptionFeature.title') }}
+                                    </p>
+                                </a>
+                            </li>
+                            {{-- @endcan --}}
                         </ul>
                     </li>
                 {{-- @endcan --}}

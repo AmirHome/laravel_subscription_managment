@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Amirhome\LaravelSubscriptionManagment\Http\Controllers\GroupsController;
 use Amirhome\LaravelSubscriptionManagment\Http\Controllers\ProductsController;
-use Amirhome\LaravelSubscriptionManagment\Http\Controllers\XfeatuesController;
+use Amirhome\LaravelSubscriptionManagment\Http\Controllers\FeaturesController;
 use Amirhome\LaravelSubscriptionManagment\Http\Controllers\SubscriptionsController;
 
 
@@ -22,8 +22,8 @@ Route::prefix(config('laravel_subscription_managment.path'))
             Route::resource('groups', GroupsController::class);
             Route::resource('products', ProductsController::class);
             Route::resource('subscriptions', SubscriptionsController::class);
-            Route::resource('xfeatues', XfeatuesController::class);
-            
+            Route::resource('features', FeaturesController::class);
+
         });
         
 
