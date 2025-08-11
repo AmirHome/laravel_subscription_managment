@@ -78,11 +78,13 @@ class FeaturesController extends Controller
         return view('laravel_subscription_managment::admin.features.create', compact('groups', 'activeSelect', 'limitedSelect'));
     }
 
-    public function store(StoreFeatureRequest $request)
+    public function store(Request $request)
     {
         $subscriptionFeature = Feature::create($request->all());
 
-        return redirect()->route('admin.subscription-features.index');
+        
+        return view('laravel_subscription_managment::admin.features.index');
+        //return redirect()->route('admin.features.index');
     }
 
     public function edit(Feature $subscriptionFeature)
@@ -98,11 +100,13 @@ class FeaturesController extends Controller
         return view('laravel_subscription_managment::admin.features.edit', compact('groups', 'subscriptionFeature', 'activeSelect', 'limitedSelect'));
     }
 
-    public function update(UpdateFeatureRequest $request, Feature $subscriptionFeature)
+    public function update(Request $request, Feature $subscriptionFeature)
     {
         $subscriptionFeature->update($request->all());
 
-        return redirect()->route('admin.subscription-features.index');
+        return view('laravel_subscription_managment::admin.features.index');
+        // return redirect()->route('admin.features.index');
+
     }
 
     public function show(Feature $subscriptionFeature)
