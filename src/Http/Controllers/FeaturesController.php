@@ -8,12 +8,13 @@ use Yajra\DataTables\Facades\DataTables;
 use Amirhome\LaravelSubscriptionManagment\Models\Group;
 use Amirhome\LaravelSubscriptionManagment\Models\Feature;
 
+use function PHPUnit\Framework\isNull;
+
 class FeaturesController extends Controller
 {
     public function index(Request $request)
     {
         // abort_if(Gate::denies('subscription_feature_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
         if ($request->ajax()) {
             $query = Feature::with(['group'])->select(sprintf('%s.*', (new Feature)->getTable()));
             $table = Datatables::of($query);
@@ -50,10 +51,10 @@ class FeaturesController extends Controller
             });
 
             $table->editColumn('active', function ($row) {
-                return $row->active ? Feature::ACTIVE_SELECT[$row->active] : '';
+                return !is_null($row->active) ? Feature::ACTIVE_SELECT[$row->active] : '';
             });
             $table->editColumn('limited', function ($row) {
-                return $row->limited ? Feature::LIMITED_SELECT[$row->limited] : '';
+                return !is_null($row->limited) ? Feature::LIMITED_SELECT[$row->limited] : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'group']);

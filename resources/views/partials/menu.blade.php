@@ -17,8 +17,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 {{-- @can('user_management_access') --}}
-                    <li class="nav-item has-treeview {{ request()->is("$path/permissions*") ? "menu-open" : "" }} {{ request()->is("$path/roles*") ? "menu-open" : "" }} {{ request()->is("$path/groups*") ? "menu-open" : "" }} {{ request()->is("$path/teams*") ? "menu-open" : "" }} {{ request()->is("$path/user-profiles*") ? "menu-open" : "" }}">
-                        <a class="nav-link nav-dropdown-toggle {{ request()->is("$path/permissions*") ? "active" : "" }} {{ request()->is("$path/roles*") ? "active" : "" }} {{ request()->is("$path/groups*") ? "active" : "" }} {{ request()->is("$path/teams*") ? "active" : "" }} {{ request()->is("$path/user-profiles*") ? "active" : "" }}" href="#">
+                    <li class="nav-item has-treeview {{ request()->is("$path/subscription_groups*") ? "menu-open" : "" }} {{ request()->is("$path/subscription_features*") ? "menu-open" : "" }} ">
+                        <a class="nav-link nav-dropdown-toggle {{ request()->is("$path/subscription_groups*") ? "active" : "" }} {{ request()->is("$path/subscription_features*") ? "active" : "" }}" href="#">
                             <i class="fa-fw nav-icon fas fa-puzzle-piece">
 
                             </i>
