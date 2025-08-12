@@ -5,14 +5,20 @@ namespace Amirhome\LaravelSubscriptionManagment\Models;
 use Amirhome\LaravelSubscriptionManagment\Enums\ConsumptionTypeEnum;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property string $end_at
  * @property Feature $feature
  */
-class FeatureConsumption extends BaseModel
+class FeatureConsumption extends Model
 {
+    public function getTable(): string
+    {
+        return subscriptionTablePrefix() . 'feature_consumptions';
+    }
+
     protected $fillable = ['subscription_id', 'code', 'feature_id', 'consumed', 'type'];
     protected $casts = [
         'quota' => 'double',

@@ -5,15 +5,21 @@ namespace Amirhome\LaravelSubscriptionManagment\Models;
 use Amirhome\LaravelSubscriptionManagment\Traits\ValidTrait;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property ?Carbon $end_at
  * @property Feature $feature
  */
-class SubscriptionQuota extends BaseModel
+class SubscriptionQuota extends Model
 {
     use ValidTrait;
+    
+    public function getTable(): string
+    {
+        return subscriptionTablePrefix() . 'quotas';
+    }
 
     protected $fillable = ['subscription_id', 'code', 'limited', 'feature_id', 'quota', 'consumed', 'end_at'];
     protected $casts = [

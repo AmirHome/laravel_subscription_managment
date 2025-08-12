@@ -8,6 +8,7 @@ use Amirhome\LaravelSubscriptionManagment\Traits\ValidTrait;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -22,9 +23,14 @@ use Illuminate\Support\Collection;
  * @method Builder valid()
  */
 #[ObservedBy(SubscriptionContractObserver::class)]
-class SubscriptionContract extends BaseModel
+class SubscriptionContract extends Model
 {
     use ValidTrait;
+
+        public function getTable(): string
+    {
+        return subscriptionTablePrefix() . 'contracts';
+    }
 
     protected $fillable = ['subscription_id', 'code', 'number', 'product_type', 'product_id', 'start_at', 'end_at', 'type', 'auto_renew'];
     protected $casts = [

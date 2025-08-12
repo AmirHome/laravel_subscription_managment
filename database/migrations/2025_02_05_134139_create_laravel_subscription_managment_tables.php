@@ -1,14 +1,16 @@
 <?php
 
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+
 
 return new class extends Migration
 {
     public function up(): void
     {
-        $prefix = config('laravel_subscription_managment.table_prefix');
+        $prefix = subscriptionTablePrefix();
         Schema::create("{$prefix}groups", function (Blueprint $table) {
             $table->id();
             $table->string("name");
@@ -21,7 +23,7 @@ return new class extends Migration
             $table->string("name");
             $table->string("code")->unique();
             $table->text("description")->nullable();
-            $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\Group')->nullable();
+            $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\SubscriptionGroup', 'group_id')->nullable();
             $table->boolean('active')->default(true);
             $table->enum("type", ['recurring', 'non-recurring'])->default('recurring');
             $table->double("price")->default(0);
@@ -35,7 +37,7 @@ return new class extends Migration
             $table->string("name");
             $table->string("code")->unique();
             $table->text("description")->nullable();
-            $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\Group')->nullable();
+            $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\SubscriptionGroup', 'group_id')->nullable();
             $table->boolean('active')->default(true);
             $table->boolean('limited')->default(false);
             $table->timestamps();
@@ -44,7 +46,7 @@ return new class extends Migration
 
         Schema::create("{$prefix}product_feature", function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\Product');
+            $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\SubscriptionProduct', 'plan_id');
             $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\Feature');
             $table->boolean('active')->default(true);
             $table->double('value')->unsigned()->default(0);
@@ -55,7 +57,7 @@ return new class extends Migration
         Schema::create("{$prefix}subscriptions", function (Blueprint $table) {
             $table->id();
             $table->morphs("subscriber");
-            $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\Product', 'plan_id');
+            $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\SubscriptionProduct', 'plan_id');
             $table->boolean("unlimited")->default(false);
             $table->timestamp("start_at")->nullable();
             $table->timestamp("end_at")->nullable();
@@ -65,7 +67,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-        Schema::create("{$prefix}subscription_contracts", function (Blueprint $table) {
+        Schema::create("{$prefix}contracts", function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\Subscription');
             $table->string("code");
@@ -90,7 +92,7 @@ return new class extends Migration
             $table->softDeletes();
         });
 
-        Schema::create("{$prefix}subscription_quotas", function (Blueprint $table) {
+        Schema::create("{$prefix}quotas", function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\Subscription');
             $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\Feature');
@@ -116,11 +118,11 @@ return new class extends Migration
 
     public function down(): void
     {
-        $prefix = config('laravel_subscription_managment.table_prefix');
+        $prefix = subscriptionTablePrefix();
         Schema::dropIfExists("{$prefix}feature_consumptions");
-        Schema::dropIfExists("{$prefix}subscription_quotas");
+        Schema::dropIfExists("{$prefix}quotas");
         Schema::dropIfExists("{$prefix}contract_transactions");
-        Schema::dropIfExists("{$prefix}subscription_contracts");
+        Schema::dropIfExists("{$prefix}contracts");
         Schema::dropIfExists("{$prefix}subscriptions");
         Schema::dropIfExists("{$prefix}product_feature");
         Schema::dropIfExists("{$prefix}features");

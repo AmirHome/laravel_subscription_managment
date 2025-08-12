@@ -5,6 +5,7 @@ namespace Amirhome\LaravelSubscriptionManagment\Models;
 
 use Amirhome\LaravelSubscriptionManagment\Enums\TransactionTypeEnum;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
@@ -12,8 +13,13 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property Carbon $start_at
  * @property ?Carbon $end_at
  */
-class ContractTransaction extends BaseModel
+class ContractTransaction extends Model
 {
+    public function getTable(): string
+    {
+        return subscriptionTablePrefix() . 'contract_transactions';
+    }
+
     protected $fillable = ['subscription_contract_id', 'type', 'start_at', 'end_at', 'causative_type', 'causative_id'];
     protected $casts = [
         'start_at' => 'datetime',

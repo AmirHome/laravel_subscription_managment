@@ -5,7 +5,7 @@ namespace Amirhome\LaravelSubscriptionManagment\Http\Controllers;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
-use Amirhome\LaravelSubscriptionManagment\Models\Group;
+use Amirhome\LaravelSubscriptionManagment\Models\SubscriptionGroup;
 use Amirhome\LaravelSubscriptionManagment\Models\Feature;
 
 use function PHPUnit\Framework\isNull;
@@ -70,7 +70,7 @@ class SubscriptionFeaturesController extends Controller
         // abort_if(Gate::denies('subscription_feature_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $activeSelect = Feature::ACTIVE_SELECT;
         $limitedSelect = Feature::LIMITED_SELECT;
-        $groups = Group::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
+        $groups = SubscriptionGroup::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
 
         return view('laravel_subscription_managment::admin.features.create', compact('groups', 'activeSelect', 'limitedSelect'));
     }
@@ -89,7 +89,7 @@ class SubscriptionFeaturesController extends Controller
 
         $activeSelect = Feature::ACTIVE_SELECT;
         $limitedSelect = Feature::LIMITED_SELECT;
-        $groups = Group::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
+        $groups = SubscriptionGroup::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
 
         $subscriptionFeature->load('group');
 

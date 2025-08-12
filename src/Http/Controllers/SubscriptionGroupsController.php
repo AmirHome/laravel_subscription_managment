@@ -5,12 +5,12 @@ namespace Amirhome\LaravelSubscriptionManagment\Http\Controllers;
 // use App\Http\Controllers\Controller;
 // use App\Http\Requests\StoreGroupRequest;
 // use App\Http\Requests\UpdateGroupRequest;
-// use App\Http\Resources\GroupResource;
-// use App\Models\Group;
+// use App\Http\Resources\SubscriptionGroupResource;
+// use App\Models\SubscriptionGroup;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Amirhome\LaravelSubscriptionManagment\Models\Group;
-use Amirhome\LaravelSubscriptionManagment\Http\Resources\GroupResource;
+use Amirhome\LaravelSubscriptionManagment\Models\SubscriptionGroup;
+use Amirhome\LaravelSubscriptionManagment\Http\Resources\SubscriptionGroupResource;
 use Amirhome\LaravelSubscriptionManagment\Http\Requests\StoreGroupRequest;  
 use Amirhome\LaravelSubscriptionManagment\Http\Requests\UpdateGroupRequest;
 use Yajra\DataTables\Facades\DataTables;
@@ -25,7 +25,7 @@ class SubscriptionGroupsController extends Controller
 
         if ($request->ajax()) {
 
-            $query = Group::query()->select(sprintf('%s.*', (new Group)->getTable()));
+            $query = SubscriptionGroup::query()->select(sprintf('%s.*', (new SubscriptionGroup)->getTable()));
             $table = Datatables::of($query);
 
             $table->addColumn('actions', '&nbsp;');
@@ -62,20 +62,20 @@ class SubscriptionGroupsController extends Controller
         }
         return view('laravel_subscription_managment::admin.groups.index');
 
-        // return new GroupResource(Group::all());
+        // return new GroupResource(SubscriptionGroup::all());
     }
 
     public function create()
     {
         // abort_if(Gate::denies('group_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $groupTypes = Group::TYPE_SELECT;
+        $groupTypes = SubscriptionGroup::TYPE_SELECT;
 
         return view('laravel_subscription_managment::admin.groups.create', compact('groupTypes'));
     }
 
     public function store(Request $request)
     {
-        $subscriptionGroup = Group::create($request->all());
+        $subscriptionGroup = SubscriptionGroup::create($request->all());
 
     return redirect()->route('ajax.subscription_groups.index');
 
@@ -85,7 +85,7 @@ class SubscriptionGroupsController extends Controller
         //     ->setStatusCode(Response::HTTP_CREATED);
     }
 
-    public function show(Group $subscriptionGroup)
+    public function show(SubscriptionGroup $subscriptionGroup)
     {
         // abort_if(Gate::denies('group_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
@@ -94,15 +94,15 @@ class SubscriptionGroupsController extends Controller
         // return new GroupResource($subscriptionGroup);
     }
 
-    public function edit(Group $subscriptionGroup)
+    public function edit(SubscriptionGroup $subscriptionGroup)
     {
         // abort_if(Gate::denies('group_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $groupTypes = Group::TYPE_SELECT;
+        $groupTypes = SubscriptionGroup::TYPE_SELECT;
         return view('laravel_subscription_managment::admin.groups.edit', compact('subscriptionGroup','groupTypes'));
     }
 
-    public function update(UpdateGroupRequest $request, Group $subscriptionGroup)
+    public function update(UpdateGroupRequest $request, SubscriptionGroup $subscriptionGroup)
     {
         $subscriptionGroup->update($request->all());
 
@@ -113,7 +113,7 @@ class SubscriptionGroupsController extends Controller
         //     ->setStatusCode(Response::HTTP_ACCEPTED);
     }
 
-    public function destroy(Group $subscriptionGroup)
+    public function destroy(SubscriptionGroup $subscriptionGroup)
     {
         // abort_if(Gate::denies('group_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 

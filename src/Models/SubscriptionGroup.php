@@ -5,13 +5,18 @@ namespace Amirhome\LaravelSubscriptionManagment\Models;
 use Illuminate\Database\Eloquent\Builder;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Model;
 
-class Group extends BaseModel
+
+class SubscriptionGroup extends Model
 {
     use SoftDeletes;
 
-    // protected $table = 'groups';
-    
+    public function getTable(): string
+    {
+        return subscriptionTablePrefix() . 'groups';
+    }
+
     protected $fillable = ['name', 'type'];
     protected $dates = [
         'created_at',

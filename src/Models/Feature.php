@@ -7,11 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Feature extends BaseModel
+class Feature extends Model
 {
     use SoftDeletes, HasFactory;
 
     // protected $table = 'features';
+    public function getTable(): string
+    {
+        return subscriptionTablePrefix() . 'features';
+    }
 
     public const LIMITED_SELECT = [
         '0' => 'NO',
@@ -44,12 +48,12 @@ class Feature extends BaseModel
 
     public function group()
     {
-        return $this->belongsTo(Group::class, 'group_id');
+        return $this->belongsTo(SubscriptionGroup::class, 'group_id');
     }
 
     // public function group(): BelongsTo
     // {
-    //     return $this->belongsTo(Group::class)->withDefault(function (Group $group) {
+    //     return $this->belongsTo(SubscriptionGroup::class)->withDefault(function (SubscriptionGroup $group) {
     //         $group->setAttribute('name', 'Others');
     //     });
     // }

@@ -18,5 +18,5 @@ interface ContractUI
     public function isRecurring(): bool;
 
     /** @return Collection<Feature> */
-    public function getFeatures(): Collection;
+    public function getFeatures();
 }

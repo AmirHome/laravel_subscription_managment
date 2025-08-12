@@ -2,7 +2,7 @@
 
 namespace Amirhome\LaravelSubscriptionManagment\Http\Requests; 
 
-use App\Models\Group;
+use App\Models\SubscriptionGroup;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;

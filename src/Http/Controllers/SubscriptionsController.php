@@ -6,7 +6,7 @@ use Amirhome\LaravelSubscriptionManagment\Http\Controllers\Controller;
 use Amirhome\LaravelSubscriptionManagment\Http\Requests\MassDestroySubscriptionRequest;
 use Amirhome\LaravelSubscriptionManagment\Http\Requests\StoreSubscriptionRequest;
 use Amirhome\LaravelSubscriptionManagment\Http\Requests\UpdateSubscriptionRequest;
-use Amirhome\LaravelSubscriptionManagment\Models\Product;
+use Amirhome\LaravelSubscriptionManagment\Models\SubscriptionProduct;
 use Amirhome\LaravelSubscriptionManagment\Models\Subscription;
 use Gate;
 use Illuminate\Http\Request;
@@ -60,7 +60,7 @@ class SubscriptionsController extends Controller
     {
     // abort_if(Gate::denies('subscription_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $products = Product::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
+        $products = SubscriptionProduct::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
 
     return view('laravel_subscription_managment::admin.subscriptions.create', compact('products'));
     }
@@ -76,7 +76,7 @@ class SubscriptionsController extends Controller
     {
     // abort_if(Gate::denies('subscription_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $products = Product::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
+        $products = SubscriptionProduct::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
 
         $subscription->load('product');
 

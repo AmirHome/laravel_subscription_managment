@@ -1,5 +1,5 @@
-<?php
 
+<?php
 use Amirhome\LaravelSubscriptionManagment\Models\Subscription;
 use Carbon\CarbonInterface;
 use Illuminate\Contracts\Support\Htmlable;
@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Js;
 
+
+if (!function_exists('subscriptionTablePrefix')) {
+    function subscriptionTablePrefix(): string
+    {
+        return config('laravel_subscription_managment.table_prefix');
+    }
+}
 
 if (!function_exists('subscription')) {
     function subscription(Model $model): ?Subscription

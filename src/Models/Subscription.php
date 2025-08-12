@@ -21,10 +21,15 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  * @property Carbon $start_at
  * @property ?Carbon $end_at
  */
-class Subscription extends BaseModel
+class Subscription extends Model
 {
     use ValidTrait;
 
+    public function getTable(): string
+    {
+        return subscriptionTablePrefix() . 'subscriptions';
+    }
+    
     protected $fillable = ['subscriber_type', 'subscriber_id', 'plan_id', 'start_at', 'end_at', 'suppressed_at', 'canceled_at', 'billing_period', 'unlimited'];
     protected $casts = [
         'start_at' => 'datetime',
@@ -50,7 +55,7 @@ class Subscription extends BaseModel
 
     public function plan(): BelongsTo
     {
-        return $this->belongsTo(Product::class, 'plan_id')->withTrashed();
+        return $this->belongsTo(SubscriptionProduct::class, 'plan_id')->withTrashed();
     }
 
     public function quotas(): HasMany

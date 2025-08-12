@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Amirhome\LaravelSubscriptionManagment\Http\Controllers\SubscriptionGroupsController;
-use Amirhome\LaravelSubscriptionManagment\Http\Controllers\ProductsController;
+use Amirhome\LaravelSubscriptionManagment\Http\Controllers\SubscriptionProductsController;
 use Amirhome\LaravelSubscriptionManagment\Http\Controllers\SubscriptionFeaturesController;
 use Amirhome\LaravelSubscriptionManagment\Http\Controllers\SubscriptionsController;
 

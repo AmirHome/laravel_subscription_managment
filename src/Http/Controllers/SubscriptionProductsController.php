@@ -20,7 +20,7 @@ class SubscriptionProductsController extends Controller
         abort_if(Gate::denies('subscription_product_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = SubscriptionProduct::with(['group'])->select(sprintf('%s.*', (new SubscriptionProduct)->table));
+            $query = SubscriptionSubscriptionProduct::with(['group'])->select(sprintf('%s.*', (new SubscriptionProduct)->table));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -55,10 +55,10 @@ class SubscriptionProductsController extends Controller
             });
 
             $table->editColumn('active', function ($row) {
-                return $row->active ? SubscriptionProduct::ACTIVE_SELECT[$row->active] : '';
+                return $row->active ? SubscriptionSubscriptionProduct::ACTIVE_SELECT[$row->active] : '';
             });
             $table->editColumn('type', function ($row) {
-                return $row->type ? SubscriptionProduct::TYPE_SELECT[$row->type] : '';
+                return $row->type ? SubscriptionSubscriptionProduct::TYPE_SELECT[$row->type] : '';
             });
             $table->editColumn('price', function ($row) {
                 return $row->price ? $row->price : '';
@@ -67,7 +67,7 @@ class SubscriptionProductsController extends Controller
                 return $row->price_yearly ? $row->price_yearly : '';
             });
             $table->editColumn('concurrency', function ($row) {
-                return $row->concurrency ? SubscriptionProduct::CONCURRENCY_RADIO[$row->concurrency] : '';
+                return $row->concurrency ? SubscriptionSubscriptionProduct::CONCURRENCY_RADIO[$row->concurrency] : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'group']);
@@ -89,7 +89,7 @@ class SubscriptionProductsController extends Controller
 
     public function store(StoreSubscriptionProductRequest $request)
     {
-        $subscriptionProduct = SubscriptionProduct::create($request->all());
+        $subscriptionProduct = SubscriptionSubscriptionProduct::create($request->all());
 
         return redirect()->route('admin.subscription-products.index');
     }
@@ -132,7 +132,7 @@ class SubscriptionProductsController extends Controller
 
     public function massDestroy(MassDestroySubscriptionProductRequest $request)
     {
-        $subscriptionProducts = SubscriptionProduct::find(request('ids'));
+        $subscriptionProducts = SubscriptionSubscriptionProduct::find(request('ids'));
 
         foreach ($subscriptionProducts as $subscriptionProduct) {
             $subscriptionProduct->delete();
