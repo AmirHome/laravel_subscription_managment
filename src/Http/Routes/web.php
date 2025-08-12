@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Amirhome\LaravelSubscriptionManagment\Http\Controllers\GroupsController;
+use Amirhome\LaravelSubscriptionManagment\Http\Controllers\SubscriptionGroupsController;
 use Amirhome\LaravelSubscriptionManagment\Http\Controllers\ProductsController;
-use Amirhome\LaravelSubscriptionManagment\Http\Controllers\FeaturesController;
+use Amirhome\LaravelSubscriptionManagment\Http\Controllers\SubscriptionFeaturesController;
 use Amirhome\LaravelSubscriptionManagment\Http\Controllers\SubscriptionsController;
 
 
@@ -19,10 +19,10 @@ Route::prefix(config('laravel_subscription_managment.path'))
             return view('laravel_subscription_managment::index');
         });
         Route::group(['as'=>'ajax.'],function () {
-            Route::resource('subscription_groups', GroupsController::class);
+            Route::resource('subscription_groups', SubscriptionGroupsController::class);
             Route::resource('subscription_products', ProductsController::class);
             Route::resource('subscriptions', SubscriptionsController::class);
-            Route::resource('subscription_features', FeaturesController::class);
+            Route::resource('subscription_features', SubscriptionFeaturesController::class);
 
         });
         

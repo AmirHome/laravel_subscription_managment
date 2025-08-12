@@ -10,7 +10,7 @@ use Amirhome\LaravelSubscriptionManagment\Models\Feature;
 
 use function PHPUnit\Framework\isNull;
 
-class FeaturesController extends Controller
+class SubscriptionFeaturesController extends Controller
 {
     public function index(Request $request)
     {

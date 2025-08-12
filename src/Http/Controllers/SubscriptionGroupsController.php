@@ -17,7 +17,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 
 
-class GroupsController extends Controller
+class SubscriptionGroupsController extends Controller
 {
     public function index(Request $request)
     {

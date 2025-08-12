@@ -49,9 +49,9 @@
             <div class="form-group">
                 <label>{{ trans('laravel_subscription_managment::cruds.subscriptionFeature.fields.active') }}</label>
                 <select class="form-control {{ $errors->has('active') ? 'is-invalid' : '' }}" name="active" id="active">
-                    <option value disabled {{ old('active', $subscriptionFeature->active) === null ? 'selected' : '' }}>{{ trans('laravel_subscription_managment::global.pleaseSelect') }}</option>
+                    <option value="" disabled {{ old('active', isset($subscriptionFeature) ? $subscriptionFeature->active : null) === null ? 'selected' : '' }}>{{ trans('laravel_subscription_managment::global.pleaseSelect') }}</option>
                     @foreach($activeSelect as $key => $label)
-                        <option value="{{ $key }}" {{ old('active', $subscriptionFeature->active) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                        <option value="{{ $key }}" {{ (string) old('active', isset($subscriptionFeature) ? $subscriptionFeature->active : null) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('active'))
@@ -62,9 +62,9 @@
             <div class="form-group">
                 <label>{{ trans('laravel_subscription_managment::cruds.subscriptionFeature.fields.limited') }}</label>
                 <select class="form-control {{ $errors->has('limited') ? 'is-invalid' : '' }}" name="limited" id="limited">
-                    <option value disabled>{{ trans('laravel_subscription_managment::global.pleaseSelect') }}</option>
+                    <option value="" disabled {{ old('limited', isset($subscriptionFeature) ? $subscriptionFeature->limited : null) === null ? 'selected' : '' }}>{{ trans('laravel_subscription_managment::global.pleaseSelect') }}</option>
                     @foreach($limitedSelect as $key => $label)
-                        <option value="{{ $key }}" {{ old('limited', $subscriptionFeature->limited) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                        <option value="{{ $key }}" {{ (string) old('limited', isset($subscriptionFeature) ? $subscriptionFeature->limited : null) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('limited'))
