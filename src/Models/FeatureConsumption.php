@@ -33,7 +33,7 @@ class FeatureConsumption extends Model
 
     public function feature(): BelongsTo
     {
-        return $this->belongsTo(Feature::class);
+        return $this->belongsTo(SubscriptionFeature::class);
     }
 
     public function scopeValid(Builder $builder, string|Carbon $startAt, string|Carbon $endAt): Builder

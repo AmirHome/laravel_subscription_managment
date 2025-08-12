@@ -60,7 +60,7 @@
                             {{ trans('laravel_subscription_managment::cruds.subscriptionFeature.fields.active') }}
                         </th>
                         <td>
-                            {{ Amirhome\LaravelSubscriptionManagment\Models\Feature::ACTIVE_SELECT[$subscriptionFeature->active] ?? '' }}
+                            {{ Amirhome\LaravelSubscriptionManagment\Models\SubscriptionFeature::ACTIVE_SELECT[$subscriptionFeature->active] ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -68,7 +68,7 @@
                             {{ trans('laravel_subscription_managment::cruds.subscriptionFeature.fields.limited') }}
                         </th>
                         <td>
-                            {{ Amirhome\LaravelSubscriptionManagment\Models\Feature::LIMITED_SELECT[$subscriptionFeature->limited] ?? '' }}
+                            {{ Amirhome\LaravelSubscriptionManagment\Models\SubscriptionFeature::LIMITED_SELECT[$subscriptionFeature->limited] ?? '' }}
                         </td>
                     </tr>
                 </tbody>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Feature;
+use App\Models\SubscriptionFeature;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;

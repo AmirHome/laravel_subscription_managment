@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Feature extends Model
+class SubscriptionFeature extends Model
 {
     use SoftDeletes, HasFactory;
 
     // protected $table = 'features';
     public function getTable(): string
     {
-        return subscriptionTablePrefix() . 'features';
+    return subscriptionTablePrefix() . 'features';
     }
 
     public const LIMITED_SELECT = [

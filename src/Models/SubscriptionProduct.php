@@ -68,7 +68,7 @@ class SubscriptionProduct extends Model implements ContractUI
         $prefix = subscriptionTablePrefix();
 
         return $this->belongsToMany(
-            Feature::class,
+            SubscriptionFeature::class,
             "{$prefix}product_feature",
             "plan_id",
             "feature_id",

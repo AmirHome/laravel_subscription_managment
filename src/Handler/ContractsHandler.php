@@ -6,7 +6,7 @@ use Amirhome\LaravelSubscriptionManagment\Concerns\ContractUI;
 use Amirhome\LaravelSubscriptionManagment\Enums\BillingCycleEnum;
 use Amirhome\LaravelSubscriptionManagment\Enums\TransactionTypeEnum;
 use Amirhome\LaravelSubscriptionManagment\Models\ContractTransaction;
-use Amirhome\LaravelSubscriptionManagment\Models\Feature;
+use Amirhome\LaravelSubscriptionManagment\Models\SubscriptionFeature;
 use Amirhome\LaravelSubscriptionManagment\Models\Subscription;
 use Amirhome\LaravelSubscriptionManagment\Models\SubscriptionContract;
 use Amirhome\LaravelSubscriptionManagment\Models\SubscriptionQuota;
@@ -125,7 +125,7 @@ readonly class ContractsHandler
     public function sync(): void
     {
         $quotas = [];
-        $this->subscription->plan->getFeatures()->each(function (Feature $feature, int|string $_) use (&$quotas) {
+        $this->subscription->plan->getFeatures()->each(function (SubscriptionFeature $feature, int|string $_) use (&$quotas) {
             if ($feature->pivot->active ?? false) {
                 $quotas[$feature->code] = [
                     'feature' => $feature,
@@ -159,7 +159,7 @@ readonly class ContractsHandler
         $this->subscription->quotas()->whereKeyNot($ids)->delete();
     }
 
-    private function syncFeature(Feature $feature, int $quota, string|CarbonInterface|null $endAt): SubscriptionQuota
+    private function syncFeature(SubscriptionFeature $feature, int $quota, string|CarbonInterface|null $endAt): SubscriptionQuota
     {
         $consumed = $feature->isConsumable()
             ? $this->subscription->consumptions()->where('feature_id', $feature->getKey())

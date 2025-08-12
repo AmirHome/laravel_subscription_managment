@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
 use Amirhome\LaravelSubscriptionManagment\Models\SubscriptionGroup;
-use Amirhome\LaravelSubscriptionManagment\Models\Feature;
+use Amirhome\LaravelSubscriptionManagment\Models\SubscriptionFeature;
 
 use function PHPUnit\Framework\isNull;
 
@@ -16,7 +16,7 @@ class SubscriptionFeaturesController extends Controller
     {
         // abort_if(Gate::denies('subscription_feature_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         if ($request->ajax()) {
-            $query = Feature::with(['group'])->select(sprintf('%s.*', (new Feature)->getTable()));
+            $query = SubscriptionFeature::with(['group'])->select(sprintf('%s.*', (new SubscriptionFeature)->getTable()));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -51,10 +51,10 @@ class SubscriptionFeaturesController extends Controller
             });
 
             $table->editColumn('active', function ($row) {
-                return !is_null($row->active) ? Feature::ACTIVE_SELECT[$row->active] : '';
+                return !is_null($row->active) ? SubscriptionFeature::ACTIVE_SELECT[$row->active] : '';
             });
             $table->editColumn('limited', function ($row) {
-                return !is_null($row->limited) ? Feature::LIMITED_SELECT[$row->limited] : '';
+                return !is_null($row->limited) ? SubscriptionFeature::LIMITED_SELECT[$row->limited] : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'group']);
@@ -68,8 +68,8 @@ class SubscriptionFeaturesController extends Controller
     public function create()
     {
         // abort_if(Gate::denies('subscription_feature_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $activeSelect = Feature::ACTIVE_SELECT;
-        $limitedSelect = Feature::LIMITED_SELECT;
+    $activeSelect = SubscriptionFeature::ACTIVE_SELECT;
+    $limitedSelect = SubscriptionFeature::LIMITED_SELECT;
         $groups = SubscriptionGroup::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
 
         return view('laravel_subscription_managment::admin.features.create', compact('groups', 'activeSelect', 'limitedSelect'));
@@ -77,18 +77,18 @@ class SubscriptionFeaturesController extends Controller
 
     public function store(Request $request)
     {
-        $subscriptionFeature = Feature::create($request->all());
+    $subscriptionFeature = SubscriptionFeature::create($request->all());
 
         
     return redirect()->route('ajax.subscription_features.index');
     }
 
-    public function edit(Feature $subscriptionFeature)
+    public function edit(SubscriptionFeature $subscriptionFeature)
     {
         // abort_if(Gate::denies('subscription_feature_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $activeSelect = Feature::ACTIVE_SELECT;
-        $limitedSelect = Feature::LIMITED_SELECT;
+        $activeSelect = SubscriptionFeature::ACTIVE_SELECT;
+        $limitedSelect = SubscriptionFeature::LIMITED_SELECT;
         $groups = SubscriptionGroup::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
 
         $subscriptionFeature->load('group');
@@ -96,7 +96,7 @@ class SubscriptionFeaturesController extends Controller
         return view('laravel_subscription_managment::admin.features.edit', compact('groups', 'subscriptionFeature', 'activeSelect', 'limitedSelect'));
     }
 
-    public function update(Request $request, Feature $subscriptionFeature)
+    public function update(Request $request, SubscriptionFeature $subscriptionFeature)
     {
         $subscriptionFeature->update($request->all());
 
@@ -104,7 +104,7 @@ class SubscriptionFeaturesController extends Controller
 
     }
 
-    public function show(Feature $subscriptionFeature)
+    public function show(SubscriptionFeature $subscriptionFeature)
     {
         // abort_if(Gate::denies('subscription_feature_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
@@ -113,7 +113,7 @@ class SubscriptionFeaturesController extends Controller
         return view('laravel_subscription_managment::admin.features.show', compact('subscriptionFeature'));
     }
 
-    public function destroy(Feature $subscriptionFeature)
+    public function destroy(SubscriptionFeature $subscriptionFeature)
     {
         // abort_if(Gate::denies('subscription_feature_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
@@ -124,7 +124,7 @@ class SubscriptionFeaturesController extends Controller
 
     public function massDestroy(MassDestroyFeatureRequest $request)
     {
-        $subscriptionFeatures = Feature::find(request('ids'));
+        $subscriptionFeatures = SubscriptionFeature::find(request('ids'));
 
         foreach ($subscriptionFeatures as $subscriptionFeature) {
             $subscriptionFeature->delete();

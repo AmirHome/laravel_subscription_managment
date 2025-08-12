@@ -47,7 +47,7 @@ return new class extends Migration
         Schema::create("{$prefix}product_feature", function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\SubscriptionProduct', 'plan_id');
-            $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\Feature');
+            $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\SubscriptionFeature', 'feature_id');
             $table->boolean('active')->default(true);
             $table->double('value')->unsigned()->default(0);
             $table->timestamps();
@@ -95,7 +95,7 @@ return new class extends Migration
         Schema::create("{$prefix}quotas", function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\Subscription');
-            $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\Feature');
+            $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\SubscriptionFeature', 'feature_id');
             $table->string("code");
             $table->timestamp("end_at")->nullable();
             $table->boolean('limited')->default(false);
@@ -107,7 +107,7 @@ return new class extends Migration
         Schema::create("{$prefix}feature_consumptions", function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\Subscription');
-            $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\Feature');
+            $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\SubscriptionFeature', 'feature_id');
             $table->string("code");
             $table->double('consumed')->unsigned()->default(0);
             $table->enum('type', ['increase', 'decrease'])->default('decrease');

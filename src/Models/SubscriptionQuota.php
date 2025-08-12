@@ -35,7 +35,7 @@ class SubscriptionQuota extends Model
 
     public function feature(): BelongsTo
     {
-        return $this->belongsTo(Feature::class);
+        return $this->belongsTo(SubscriptionFeature::class);
     }
 
     public function isActive(): bool
