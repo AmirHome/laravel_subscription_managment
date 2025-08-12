@@ -46,4 +46,31 @@ class Feature extends BaseModel
     {
         return $this->belongsTo(Group::class, 'group_id');
     }
+
+    // public function group(): BelongsTo
+    // {
+    //     return $this->belongsTo(Group::class)->withDefault(function (Group $group) {
+    //         $group->setAttribute('name', 'Others');
+    //     });
+    // }
+
+    public function isConsumable(): bool
+    {
+        return (bool)$this->limited;
+    }
+
+    public function isActive(): bool
+    {
+        return (bool)$this->active;
+    }
+
+    public function scopeActive(Builder $query): Builder
+    {
+        return $query->where('active', true);
+    }
+
+    public function scopeSearch(Builder $query, string $keyword): Builder
+    {
+        return $query->whereAny(['name', 'description'], "like", "%$keyword%");
+    }
 }
