@@ -34,7 +34,7 @@ class GroupsController extends Controller
                 $viewGate      = 'group_show';
                 $editGate      = 'group_edit';
                 $deleteGate    = 'group_delete';
-                $crudRoutePart = 'groups';
+                $crudRoutePart = 'subscription_groups';
 
                 return view('laravel_subscription_managment::partials.datatablesActions', compact(
                     'viewGate',
@@ -75,49 +75,49 @@ class GroupsController extends Controller
 
     public function store(Request $request)
     {
-        $group = Group::create($request->all());
+        $subscriptionGroup = Group::create($request->all());
 
-        return redirect()->route('ajax.groups.index');
+    return redirect()->route('ajax.subscription_groups.index');
 
 
-        // return (new GroupResource($group))
+        // return (new GroupResource($subscriptionGroup))
         //     ->response()
         //     ->setStatusCode(Response::HTTP_CREATED);
     }
 
-    public function show(Group $group)
+    public function show(Group $subscriptionGroup)
     {
         // abort_if(Gate::denies('group_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('laravel_subscription_managment::admin.groups.show', compact('group'));
+        return view('laravel_subscription_managment::admin.groups.show', compact('subscriptionGroup'));
 
-        // return new GroupResource($group);
+        // return new GroupResource($subscriptionGroup);
     }
 
-    public function edit(Group $group)
+    public function edit(Group $subscriptionGroup)
     {
         // abort_if(Gate::denies('group_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $groupTypes = Group::TYPE_SELECT;
-        return view('laravel_subscription_managment::admin.groups.edit', compact('group','groupTypes'));
+        return view('laravel_subscription_managment::admin.groups.edit', compact('subscriptionGroup','groupTypes'));
     }
 
-    public function update(UpdateGroupRequest $request, Group $group)
+    public function update(UpdateGroupRequest $request, Group $subscriptionGroup)
     {
-        $group->update($request->all());
+        $subscriptionGroup->update($request->all());
 
-        return redirect()->route('ajax.groups.index');
+    return redirect()->route('ajax.subscription_groups.index');
 
-        // return (new GroupResource($group))
+        // return (new GroupResource($subscriptionGroup))
         //     ->response()
         //     ->setStatusCode(Response::HTTP_ACCEPTED);
     }
 
-    public function destroy(Group $group)
+    public function destroy(Group $subscriptionGroup)
     {
         // abort_if(Gate::denies('group_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $group->delete();
+        $subscriptionGroup->delete();
 
         return back();
 

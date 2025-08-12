@@ -9,7 +9,7 @@
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('ajax.features.index') }}">
+                <a class="btn btn-default" href="{{ route('ajax.subscription_features.index') }}">
                     {{ trans('laravel_subscription_managment::global.back_to_list') }}
                 </a>
             </div>
@@ -20,7 +20,7 @@
                             {{ trans('laravel_subscription_managment::cruds.subscriptionFeature.fields.id') }}
                         </th>
                         <td>
-                            {{ $feature->id }}
+                            {{ $subscriptionFeature->id }}
                         </td>
                     </tr>
                     <tr>
@@ -28,7 +28,7 @@
                             {{ trans('laravel_subscription_managment::cruds.subscriptionFeature.fields.name') }}
                         </th>
                         <td>
-                            {{ $feature->name }}
+                            {{ $subscriptionFeature->name }}
                         </td>
                     </tr>
                     <tr>
@@ -36,7 +36,7 @@
                             {{ trans('laravel_subscription_managment::cruds.subscriptionFeature.fields.code') }}
                         </th>
                         <td>
-                            {{ $feature->code }}
+                            {{ $subscriptionFeature->code }}
                         </td>
                     </tr>
                     <tr>
@@ -44,7 +44,7 @@
                             {{ trans('laravel_subscription_managment::cruds.subscriptionFeature.fields.description') }}
                         </th>
                         <td>
-                            {{ $feature->description }}
+                            {{ $subscriptionFeature->description }}
                         </td>
                     </tr>
                     <tr>
@@ -52,7 +52,7 @@
                             {{ trans('laravel_subscription_managment::cruds.subscriptionFeature.fields.group') }}
                         </th>
                         <td>
-                            {{ $feature->group->name ?? '' }}
+                            {{ $subscriptionFeature->group->name ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -60,7 +60,7 @@
                             {{ trans('laravel_subscription_managment::cruds.subscriptionFeature.fields.active') }}
                         </th>
                         <td>
-                            {{ Amirhome\LaravelSubscriptionManagment\Models\Feature::ACTIVE_SELECT[$feature->active] ?? '' }}
+                            {{ Amirhome\LaravelSubscriptionManagment\Models\Feature::ACTIVE_SELECT[$subscriptionFeature->active] ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -68,13 +68,13 @@
                             {{ trans('laravel_subscription_managment::cruds.subscriptionFeature.fields.limited') }}
                         </th>
                         <td>
-                            {{ Amirhome\LaravelSubscriptionManagment\Models\Feature::LIMITED_SELECT[$feature->limited] ?? '' }}
+                            {{ Amirhome\LaravelSubscriptionManagment\Models\Feature::LIMITED_SELECT[$subscriptionFeature->limited] ?? '' }}
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('ajax.features.index') }}">
+                <a class="btn btn-default" href="{{ route('ajax.subscription_features.index') }}">
                     {{ trans('laravel_subscription_managment::global.back_to_list') }}
                 </a>
             </div>

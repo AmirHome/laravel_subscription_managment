@@ -3,7 +3,7 @@
 {{-- @can('group_create') --}}
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('ajax.groups.create') }}">
+            <a class="btn btn-success" href="{{ route('ajax.subscription_groups.create') }}">
                 {{ trans('laravel_subscription_managment::global.add') }} {{ trans('laravel_subscription_managment::cruds.subscriptionGroup.title_singular') }}
             </a>
         </div>
@@ -51,7 +51,7 @@
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: "{{ route('ajax.groups.index') }}",
+    ajax: "{{ route('ajax.subscription_groups.index') }}",
     columns: [
 { data: 'id', name: 'id' },
 { data: 'name', name: 'name' },

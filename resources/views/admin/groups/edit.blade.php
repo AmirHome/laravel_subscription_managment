@@ -7,12 +7,12 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("ajax.groups.update", [$group->id]) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route("ajax.subscription_groups.update", [$subscriptionGroup->id]) }}" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="form-group">
                 <label class="required" for="name">{{ trans('laravel_subscription_managment::cruds.subscriptionGroup.fields.name') }}</label>
-                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $group->name) }}" required>
+                <input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" id="name" value="{{ old('name', $subscriptionGroup->name) }}" required>
                 @if($errors->has('name'))
                     <span class="text-danger">{{ $errors->first('name') }}</span>
                 @endif
@@ -21,11 +21,10 @@
             <div class="form-group">
                 <label>{{ trans('laravel_subscription_managment::cruds.subscriptionGroup.fields.type') }}</label>
 
-                {{$group->type}}
                 <select class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" id="type">
                     <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('laravel_subscription_managment::global.pleaseSelect') }}</option>
                     @foreach($groupTypes as $key => $label)
-                        <option value="{{ $key }}" {{ old('type', $group->type) === (string) $label ? 'selected' : '' }}>{{ $label }}</option>
+                        <option value="{{ $key }}" {{ old('type', $subscriptionGroup->type) === (string) $label ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('type'))

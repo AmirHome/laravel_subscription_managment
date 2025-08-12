@@ -7,7 +7,7 @@
     </div>
 
     <div class="card-body">
-    <form method="POST" action="{{ route('ajax.features.store') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('ajax.subscription_features.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="name">{{ trans('laravel_subscription_managment::cruds.subscriptionFeature.fields.name') }}</label>
@@ -47,6 +47,7 @@
             </div>
             <div class="form-group">
                 <label>{{ trans('laravel_subscription_managment::cruds.subscriptionFeature.fields.active') }}</label>
+                
                 <select class="form-control {{ $errors->has('active') ? 'is-invalid' : '' }}" name="active" id="active">
                     <option value disabled {{ old('active', null) === null ? 'selected' : '' }}>{{ trans('laravel_subscription_managment::global.pleaseSelect') }}</option>
                     @foreach($activeSelect as $key => $label)

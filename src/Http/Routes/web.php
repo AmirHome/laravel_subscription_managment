@@ -19,10 +19,10 @@ Route::prefix(config('laravel_subscription_managment.path'))
             return view('laravel_subscription_managment::index');
         });
         Route::group(['as'=>'ajax.'],function () {
-            Route::resource('groups', GroupsController::class);
-            Route::resource('products', ProductsController::class);
+            Route::resource('subscription_groups', GroupsController::class);
+            Route::resource('subscription_products', ProductsController::class);
             Route::resource('subscriptions', SubscriptionsController::class);
-            Route::resource('features', FeaturesController::class);
+            Route::resource('subscription_features', FeaturesController::class);
 
         });
         

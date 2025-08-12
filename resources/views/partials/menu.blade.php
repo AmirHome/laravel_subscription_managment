@@ -30,7 +30,7 @@
                         <ul class="nav nav-treeview">
                             {{-- @can('group_access') --}}
                             <li class="nav-item">
-                                <a href="{{ route("ajax.groups.index") }}" class="nav-link {{ request()->is("$path/groups") || request()->is("$path/groups/*") ? "active" : "" }}">
+                                <a href="{{ route("ajax.subscription_groups.index") }}" class="nav-link {{ request()->is("$path/subscription_groups") || request()->is("$path/subscription_groups/*") ? "active" : "" }}">
                                     <i class="fa-fw nav-icon fas fa-layer-group"></i>
                                     <p>
                                         {{ trans('laravel_subscription_managment::cruds.subscriptionGroup.title') }}
@@ -40,7 +40,7 @@
                             {{-- @endcan --}}
                             {{-- @can('feature_access') --}}
                             <li class="nav-item">
-                                <a href="{{ route('ajax.features.index') }}" class="nav-link {{ request()->is("$path/features") || request()->is("$path/features/*") ? "active" : "" }}">
+                                <a href="{{ route('ajax.subscription_features.index') }}" class="nav-link {{ request()->is("$path/subscription_features") || request()->is("$path/subscription_features/*") ? "active" : "" }}">
                                     <i class="fa-fw nav-icon fas fa-star"></i>
                                     <p>
                                         {{ trans('laravel_subscription_managment::cruds.subscriptionFeature.title') }}

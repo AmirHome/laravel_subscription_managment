@@ -3,7 +3,7 @@
 {{-- @can('feature_create') --}}
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('ajax.features.create') }}">
+            <a class="btn btn-success" href="{{ route('ajax.subscription_features.create') }}">
                 {{ trans('laravel_subscription_managment::global.add') }} {{ trans('laravel_subscription_managment::cruds.subscriptionFeature.title_singular') }}
             </a>
         </div>
@@ -60,7 +60,7 @@
   let deleteButtonTrans = '{{ trans('laravel_subscription_managment::global.datatables.delete') }}';
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('ajax.features.massDestroy') }}",
+    url: "{{ route('ajax.subscription_features.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).data(), function (entry) {
@@ -92,7 +92,7 @@
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: "{{ route('ajax.features.index') }}",
+    ajax: "{{ route('ajax.subscription_features.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },

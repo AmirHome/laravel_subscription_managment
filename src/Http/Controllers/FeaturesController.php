@@ -4,13 +4,9 @@ namespace Amirhome\LaravelSubscriptionManagment\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Amirhome\LaravelSubscriptionManagment\Models\Feature;
-use Amirhome\LaravelSubscriptionManagment\Models\Group;
-
-use Amirhome\LaravelSubscriptionManagment\Http\Requests\StoreFeatureRequest;
-use Amirhome\LaravelSubscriptionManagment\Http\Requests\UpdateFeatureRequest;
 use Yajra\DataTables\Facades\DataTables;
-
+use Amirhome\LaravelSubscriptionManagment\Models\Group;
+use Amirhome\LaravelSubscriptionManagment\Models\Feature;
 
 class FeaturesController extends Controller
 {
@@ -19,7 +15,7 @@ class FeaturesController extends Controller
         // abort_if(Gate::denies('subscription_feature_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         if ($request->ajax()) {
-            $query = Feature::with(['group'])->select(sprintf('%s.*', (new Feature)->table));
+            $query = Feature::with(['group'])->select(sprintf('%s.*', (new Feature)->getTable()));
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -29,9 +25,9 @@ class FeaturesController extends Controller
                 $viewGate      = 'subscription_feature_show';
                 $editGate      = 'subscription_feature_edit';
                 $deleteGate    = 'subscription_feature_delete';
-                $crudRoutePart = 'subscription-features';
+                $crudRoutePart = 'subscription_features';
 
-                return view('partials.datatablesActions', compact(
+                return view('laravel_subscription_managment::partials.datatablesActions', compact(
                     'viewGate',
                     'editGate',
                     'deleteGate',
@@ -83,8 +79,7 @@ class FeaturesController extends Controller
         $subscriptionFeature = Feature::create($request->all());
 
         
-        return view('laravel_subscription_managment::admin.features.index');
-        //return redirect()->route('admin.features.index');
+    return redirect()->route('ajax.subscription_features.index');
     }
 
     public function edit(Feature $subscriptionFeature)
@@ -104,8 +99,7 @@ class FeaturesController extends Controller
     {
         $subscriptionFeature->update($request->all());
 
-        return view('laravel_subscription_managment::admin.features.index');
-        // return redirect()->route('admin.features.index');
+    return redirect()->route('ajax.subscription_features.index');
 
     }
 

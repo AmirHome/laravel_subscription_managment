@@ -11,7 +11,7 @@ class Feature extends BaseModel
 {
     use SoftDeletes, HasFactory;
 
-    protected $table = 'features';
+    // protected $table = 'features';
 
     public const LIMITED_SELECT = [
         '0' => 'NO',
