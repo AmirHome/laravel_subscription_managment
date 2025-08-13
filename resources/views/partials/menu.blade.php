@@ -17,8 +17,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 {{-- @can('user_management_access') --}}
-                    <li class="nav-item has-treeview {{ request()->is("$path/subscription_groups*") ? "menu-open" : "" }} {{ request()->is("$path/subscription_features*") ? "menu-open" : "" }} ">
-                        <a class="nav-link nav-dropdown-toggle {{ request()->is("$path/subscription_groups*") ? "active" : "" }} {{ request()->is("$path/subscription_features*") ? "active" : "" }}" href="#">
+                    <li class="nav-item has-treeview {{ request()->is("$path/subscription_groups*") ? "menu-open" : "" }} {{ request()->is("$path/subscription_features*") ? "menu-open" : "" }}  {{ request()->is("$path/subscription_products*") ? "menu-open" : "" }}">
+                        <a class="nav-link nav-dropdown-toggle {{ request()->is("$path/subscription_groups*") ? "active" : "" }} {{ request()->is("$path/subscription_features*") ? "active" : "" }} {{ request()->is("$path/subscription_products*") ? "active" : "" }}"  href="#">
                             <i class="fa-fw nav-icon fas fa-puzzle-piece">
 
                             </i>
@@ -48,6 +48,14 @@
                                 </a>
                             </li>
                             {{-- @endcan --}}
+                                <li class="nav-item">
+                                    <a href="{{ route('ajax.subscription_products.index') }}" class="nav-link {{ request()->is("$path/subscription_products") || request()->is("$path/subscription_products/*") ? "active" : "" }}">
+                                        <i class="fa-fw nav-icon fas fa-box"></i>
+                                        <p>
+                                            {{ trans('laravel_subscription_managment::cruds.subscriptionProduct.title') }}
+                                        </p>
+                                    </a>
+                                </li>
                         </ul>
                     </li>
                 {{-- @endcan --}}

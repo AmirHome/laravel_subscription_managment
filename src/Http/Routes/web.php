@@ -20,7 +20,7 @@ Route::prefix(config('laravel_subscription_managment.path'))
         });
         Route::group(['as'=>'ajax.'],function () {
             Route::resource('subscription_groups', SubscriptionGroupsController::class);
-            Route::resource('subscription_products', ProductsController::class);
+            Route::resource('subscription_products', SubscriptionProductsController::class);
             Route::resource('subscriptions', SubscriptionsController::class);
             Route::resource('subscription_features', SubscriptionFeaturesController::class);
 

@@ -28,6 +28,7 @@ return new class extends Migration
             $table->enum("type", ['recurring', 'non-recurring'])->default('recurring');
             $table->double("price")->default(0);
             $table->double("price_yearly")->default(0);
+            $table->unsignedTinyInteger('concurrency')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -14,7 +14,7 @@ class SubscriptionFeature extends Model
     // protected $table = 'features';
     public function getTable(): string
     {
-    return subscriptionTablePrefix() . 'features';
+        return subscriptionTablePrefix() . 'features';
     }
 
     public const LIMITED_SELECT = [
