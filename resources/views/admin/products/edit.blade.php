@@ -49,9 +49,9 @@
             <div class="form-group">
                 <label>{{ trans('laravel_subscription_managment::cruds.subscriptionProduct.fields.active') }}</label>
                 <select class="form-control {{ $errors->has('active') ? 'is-invalid' : '' }}" name="active" id="active">
-                    <option value disabled {{ old('active', null) === null ? 'selected' : '' }}>{{ trans('laravel_subscription_managment::global.pleaseSelect') }}</option>
+                    <option value disabled {{ is_null(old('active', isset($subscriptionProduct) ? $subscriptionProduct->active : null)) ? 'selected' : '' }}>{{ trans('laravel_subscription_managment::global.pleaseSelect') }}</option>
                     @foreach(Amirhome\LaravelSubscriptionManagment\Models\SubscriptionProduct::ACTIVE_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('active', $subscriptionProduct->active) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                        <option value="{{ $key }}" {{ (string) old('active', isset($subscriptionProduct) ? $subscriptionProduct->active : null) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('active'))
@@ -62,9 +62,9 @@
             <div class="form-group">
                 <label>{{ trans('laravel_subscription_managment::cruds.subscriptionProduct.fields.type') }}</label>
                 <select class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" id="type">
-                    <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('laravel_subscription_managment::global.pleaseSelect') }}</option>
+                    <option value disabled {{ is_null(old('type', isset($subscriptionProduct) ? $subscriptionProduct->type : null)) ? 'selected' : '' }}>{{ trans('laravel_subscription_managment::global.pleaseSelect') }}</option>
                     @foreach(Amirhome\LaravelSubscriptionManagment\Models\SubscriptionProduct::TYPE_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('type', $subscriptionProduct->type) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                        <option value="{{ $key }}" {{ (string) old('type', isset($subscriptionProduct) ? $subscriptionProduct->type : null) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('type'))
@@ -92,7 +92,7 @@
                 <label>{{ trans('laravel_subscription_managment::cruds.subscriptionProduct.fields.concurrency') }}</label>
                 @foreach(Amirhome\LaravelSubscriptionManagment\Models\SubscriptionProduct::CONCURRENCY_RADIO as $key => $label)
                     <div class="form-check {{ $errors->has('concurrency') ? 'is-invalid' : '' }}">
-                        <input class="form-check-input" type="radio" id="concurrency_{{ $key }}" name="concurrency" value="{{ $key }}" {{ old('concurrency', $subscriptionProduct->concurrency) === (string) $key ? 'checked' : '' }}>
+                        <input class="form-check-input" type="radio" id="concurrency_{{ $key }}" name="concurrency" value="{{ $key }}" {{ (string) old('concurrency', isset($subscriptionProduct) ? $subscriptionProduct->concurrency : null) === (string) $key ? 'checked' : '' }}>
                         <label class="form-check-label" for="concurrency_{{ $key }}">{{ $label }}</label>
                     </div>
                 @endforeach

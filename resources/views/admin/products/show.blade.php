@@ -60,7 +60,7 @@
                             {{ trans('laravel_subscription_managment::cruds.subscriptionProduct.fields.active') }}
                         </th>
                         <td>
-                            {{ Amirhome\LaravelSubscriptionManagment\Models\SubscriptionProduct::ACTIVE_SELECT[$subscriptionProduct->active] ?? '' }}
+                            {{ isset($subscriptionProduct->active) && !is_null($subscriptionProduct->active) ? Amirhome\LaravelSubscriptionManagment\Models\SubscriptionProduct::ACTIVE_SELECT[$subscriptionProduct->active] : '' }}
                         </td>
                     </tr>
                     <tr>
@@ -68,7 +68,7 @@
                             {{ trans('laravel_subscription_managment::cruds.subscriptionProduct.fields.type') }}
                         </th>
                         <td>
-                            {{ Amirhome\LaravelSubscriptionManagment\Models\SubscriptionProduct::TYPE_SELECT[$subscriptionProduct->type] ?? '' }}
+                            {{ isset($subscriptionProduct->type) && !is_null($subscriptionProduct->type) && array_key_exists($subscriptionProduct->type, Amirhome\LaravelSubscriptionManagment\Models\SubscriptionProduct::TYPE_SELECT) ? Amirhome\LaravelSubscriptionManagment\Models\SubscriptionProduct::TYPE_SELECT[$subscriptionProduct->type] : '' }}
                         </td>
                     </tr>
                     <tr>
@@ -92,7 +92,7 @@
                             {{ trans('laravel_subscription_managment::cruds.subscriptionProduct.fields.concurrency') }}
                         </th>
                         <td>
-                            {{ Amirhome\LaravelSubscriptionManagment\Models\SubscriptionProduct::CONCURRENCY_RADIO[$subscriptionProduct->concurrency] ?? '' }}
+                            {{ isset($subscriptionProduct->concurrency) && !is_null($subscriptionProduct->concurrency) ? Amirhome\LaravelSubscriptionManagment\Models\SubscriptionProduct::CONCURRENCY_RADIO[$subscriptionProduct->concurrency] : '' }}
                         </td>
                     </tr>
                 </tbody>

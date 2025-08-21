@@ -66,7 +66,7 @@
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 @can('subscription_product_delete')
-  let deleteButtonTrans = '{{ trans('global.datatables.delete') }}';
+    let deleteButtonTrans = '{{ trans('laravel_subscription_managment::global.datatables.delete') }}';
   let deleteButton = {
     text: deleteButtonTrans,
     url: "{{ route('admin.subscription-products.massDestroy') }}",
@@ -77,12 +77,12 @@
       });
 
       if (ids.length === 0) {
-        alert('{{ trans('global.datatables.zero_selected') }}')
+    alert('{{ trans('laravel_subscription_managment::global.datatables.zero_selected') }}')
 
         return
       }
 
-      if (confirm('{{ trans('global.areYouSure') }}')) {
+    if (confirm('{{ trans('laravel_subscription_managment::global.areYouSure') }}')) {
         $.ajax({
           headers: {'x-csrf-token': _token},
           method: 'POST',

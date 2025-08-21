@@ -56,10 +56,11 @@ class SubscriptionProductsController extends Controller
             });
 
             $table->editColumn('active', function ($row) {
-                return $row->active ? SubscriptionProduct::ACTIVE_SELECT[$row->active] : '';
+                return !is_null($row->active) ? SubscriptionProduct::ACTIVE_SELECT[$row->active] : '';
             });
             $table->editColumn('type', function ($row) {
-                return $row->type;// ? SubscriptionProduct::TYPE_SELECT[$row->type] : '';
+                // !is_null($row->type) ? dd($row) : '';
+                return !is_null($row->type) ?  SubscriptionProduct::TYPE_SELECT[1] : '';
             });
             $table->editColumn('price', function ($row) {
                 return $row->price ? $row->price : '';
@@ -68,7 +69,7 @@ class SubscriptionProductsController extends Controller
                 return $row->price_yearly ? $row->price_yearly : '';
             });
             $table->editColumn('concurrency', function ($row) {
-                return $row->concurrency ? SubscriptionProduct::CONCURRENCY_RADIO[$row->concurrency] : '';
+                return !is_null($row->concurrency) ? SubscriptionProduct::CONCURRENCY_RADIO[$row->concurrency] : '';
             });
 
             $table->rawColumns(['actions', 'placeholder', 'group']);
@@ -83,7 +84,7 @@ class SubscriptionProductsController extends Controller
     {
         // abort_if(Gate::denies('subscription_product_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $groups = SubscriptionGroup::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $groups = SubscriptionGroup::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
 
         return view('laravel_subscription_managment::admin.products.create', compact('groups'));
     }
@@ -99,7 +100,7 @@ class SubscriptionProductsController extends Controller
     {
         // abort_if(Gate::denies('subscription_product_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $groups = SubscriptionGroup::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $groups = SubscriptionGroup::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
 
         $subscriptionProduct->load('group');
 
