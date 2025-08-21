@@ -59,8 +59,8 @@ class SubscriptionProductsController extends Controller
                 return !is_null($row->active) ? SubscriptionProduct::ACTIVE_SELECT[$row->active] : '';
             });
             $table->editColumn('type', function ($row) {
-                // !is_null($row->type) ? dd($row) : '';
-                return !is_null($row->type) ?  SubscriptionProduct::TYPE_SELECT[1] : '';
+                return $row->type ;
+                // return !is_null($row->type) ?  SubscriptionProduct::TYPE_SELECT[1] : '';
             });
             $table->editColumn('price', function ($row) {
                 return $row->price ? $row->price : '';
@@ -85,8 +85,10 @@ class SubscriptionProductsController extends Controller
         // abort_if(Gate::denies('subscription_product_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $groups = SubscriptionGroup::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
+        $productTypes = SubscriptionProduct::TYPE_SELECT;
+        $productActiveStatus = SubscriptionProduct::ACTIVE_SELECT;
 
-        return view('laravel_subscription_managment::admin.products.create', compact('groups'));
+        return view('laravel_subscription_managment::admin.products.create', compact('groups', 'productTypes', 'productActiveStatus'));
     }
 
     public function store(Request $request)
@@ -103,8 +105,10 @@ class SubscriptionProductsController extends Controller
         $groups = SubscriptionGroup::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
 
         $subscriptionProduct->load('group');
+        $productActiveStatus = SubscriptionProduct::ACTIVE_SELECT;
+        $productTypes = SubscriptionProduct::TYPE_SELECT;
 
-        return view('laravel_subscription_managment::admin.products.edit', compact('groups', 'subscriptionProduct'));
+        return view('laravel_subscription_managment::admin.products.edit', compact('groups', 'productTypes', 'productActiveStatus', 'subscriptionProduct'));
     }
 
     public function update(Request $request, SubscriptionProduct $subscriptionProduct)

@@ -68,7 +68,7 @@
                             {{ trans('laravel_subscription_managment::cruds.subscriptionProduct.fields.type') }}
                         </th>
                         <td>
-                            {{ isset($subscriptionProduct->type) && !is_null($subscriptionProduct->type) && array_key_exists($subscriptionProduct->type, Amirhome\LaravelSubscriptionManagment\Models\SubscriptionProduct::TYPE_SELECT) ? Amirhome\LaravelSubscriptionManagment\Models\SubscriptionProduct::TYPE_SELECT[$subscriptionProduct->type] : '' }}
+                            {{ $subscriptionProduct->type ?? '' }}
                         </td>
                     </tr>
                     <tr>

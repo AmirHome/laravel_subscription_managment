@@ -24,8 +24,7 @@ return new class extends Migration
             $table->string("code")->unique();
             $table->text("description")->nullable();
             $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\SubscriptionGroup', 'group_id')->nullable();
-            // $table->enum("type", ['recurring', 'non-recurring'])->default('recurring');
-            $table->boolean('type')->default(true);
+            $table->enum("type", ['recurring', 'non-recurring'])->default('recurring');
             $table->boolean('active')->default(true);
             $table->double("price")->default(0);
             $table->double("price_yearly")->default(0);

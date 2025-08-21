@@ -23,8 +23,8 @@ class SubscriptionProduct extends Model implements ContractUI
     ];
 
     public const ACTIVE_SELECT = [
-        '1' => 'Active',
         '0' => 'Passive',
+        '1' => 'Active',
     ];
 
     protected $dates = [
@@ -34,8 +34,8 @@ class SubscriptionProduct extends Model implements ContractUI
     ];
 
     public const TYPE_SELECT = [
-        '0' => 'non-recurring',
         '1' => 'recurring',
+        '2' => 'non-recurring',
     ];
 
     protected $fillable = [

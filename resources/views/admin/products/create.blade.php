@@ -49,7 +49,7 @@
                 <label>{{ trans('laravel_subscription_managment::cruds.subscriptionProduct.fields.active') }}</label>
                 <select class="form-control {{ $errors->has('active') ? 'is-invalid' : '' }}" name="active" id="active">
                     <option value disabled {{ is_null(old('active', null)) ? 'selected' : '' }}>{{ trans('laravel_subscription_managment::global.pleaseSelect') }}</option>
-                    @foreach(Amirhome\LaravelSubscriptionManagment\Models\SubscriptionProduct::ACTIVE_SELECT as $key => $label)
+                    @foreach($productActiveStatus as $key => $label)
                         <option value="{{ $key }}" {{ (string) old('active', null) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
                 </select>
@@ -62,7 +62,7 @@
                 <label>{{ trans('laravel_subscription_managment::cruds.subscriptionProduct.fields.type') }}</label>
                 <select class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" id="type">
                     <option value disabled {{ is_null(old('type', null)) ? 'selected' : '' }}>{{ trans('laravel_subscription_managment::global.pleaseSelect') }}</option>
-                    @foreach(Amirhome\LaravelSubscriptionManagment\Models\SubscriptionProduct::TYPE_SELECT as $key => $label)
+                    @foreach($productTypes as $key => $label)
                         <option value="{{ $key }}" {{ (string) old('type', null) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
                     @endforeach
                 </select>
