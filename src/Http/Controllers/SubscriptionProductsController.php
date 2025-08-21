@@ -31,7 +31,7 @@ class SubscriptionProductsController extends Controller
                 $viewGate      = 'subscription_product_show';
                 $editGate      = 'subscription_product_edit';
                 $deleteGate    = 'subscription_product_delete';
-                $crudRoutePart = 'subscription_products';
+                $crudRoutePart = 'subscription-products';
 
                 return view('laravel_subscription_managment::partials.datatablesActions', compact(
                     'viewGate',
@@ -95,7 +95,7 @@ class SubscriptionProductsController extends Controller
     {
         $subscriptionProduct = SubscriptionProduct::create($request->all());
 
-    return redirect()->route('ajax.subscription_products.index');
+    return redirect()->route('ajax.subscription-products.index');
     }
 
     public function edit(SubscriptionProduct $subscriptionProduct)
@@ -115,7 +115,7 @@ class SubscriptionProductsController extends Controller
     {
         $subscriptionProduct->update($request->all());
 
-    return redirect()->route('ajax.subscription_products.index');
+    return redirect()->route('ajax.subscription-products.index');
     }
 
     public function show(SubscriptionProduct $subscriptionProduct)

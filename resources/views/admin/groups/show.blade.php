@@ -9,7 +9,7 @@
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('ajax.subscription_groups.index') }}">
+                <a class="btn btn-default" href="{{ route('ajax.subscription-groups.index') }}">
                     {{ trans('laravel_subscription_managment::global.back_to_list') }}
                 </a>
             </div>
@@ -42,7 +42,7 @@
                 </tbody>
             </table>
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('ajax.subscription_groups.index') }}">
+                <a class="btn btn-default" href="{{ route('ajax.subscription-groups.index') }}">
                     {{ trans('laravel_subscription_managment::global.back_to_list') }}
                 </a>
             </div>

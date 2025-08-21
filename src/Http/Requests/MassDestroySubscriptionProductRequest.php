@@ -20,7 +20,7 @@ class MassDestroySubscriptionProductRequest extends FormRequest
     {
         return [
             'ids'   => 'required|array',
-            'ids.*' => 'exists:subscription_products,id',
+            'ids.*' => 'exists:subscription-products,id',
         ];
     }
 }

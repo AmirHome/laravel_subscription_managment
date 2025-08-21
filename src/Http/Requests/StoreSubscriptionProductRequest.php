@@ -24,7 +24,7 @@ class StoreSubscriptionProductRequest extends FormRequest
             'code' => [
                 'string',
                 'required',
-                'unique:subscription_products',
+                'unique:subscription-products',
             ],
             'description' => [
                 'string',

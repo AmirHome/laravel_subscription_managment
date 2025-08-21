@@ -24,7 +24,7 @@ class UpdateSubscriptionProductRequest extends FormRequest
             'code' => [
                 'string',
                 'required',
-                'unique:subscription_products,code,' . request()->route('subscription_product')->id,
+                'unique:subscription-products,code,' . request()->route('subscription_product')->id,
             ],
             'description' => [
                 'string',

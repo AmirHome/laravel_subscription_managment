@@ -3,7 +3,7 @@
 {{-- @can('subscription_product_create') --}}
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('ajax.subscription_products.create') }}">
+            <a class="btn btn-success" href="{{ route('ajax.subscription-products.create') }}">
                 {{ trans('laravel_subscription_managment::global.add') }} {{ trans('laravel_subscription_managment::cruds.subscriptionProduct.title_singular') }}
             </a>
         </div>
@@ -101,7 +101,7 @@
     serverSide: true,
     retrieve: true,
     aaSorting: [],
-    ajax: "{{ route('ajax.subscription_products.index') }}",
+    ajax: "{{ route('ajax.subscription-products.index') }}",
     columns: [
       { data: 'placeholder', name: 'placeholder' },
 { data: 'id', name: 'id' },

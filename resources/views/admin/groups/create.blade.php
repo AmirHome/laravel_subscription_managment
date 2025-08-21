@@ -7,7 +7,7 @@
     </div>
 
     <div class="card-body">
-    <form method="POST" action="{{ route("ajax.subscription_groups.store") }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route("ajax.subscription-groups.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label class="required" for="name">{{ trans('laravel_subscription_managment::cruds.subscriptionGroup.fields.name') }}</label>

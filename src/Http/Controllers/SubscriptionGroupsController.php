@@ -34,7 +34,7 @@ class SubscriptionGroupsController extends Controller
                 $viewGate      = 'group_show';
                 $editGate      = 'group_edit';
                 $deleteGate    = 'group_delete';
-                $crudRoutePart = 'subscription_groups';
+                $crudRoutePart = 'subscription-groups';
 
                 return view('laravel_subscription_managment::partials.datatablesActions', compact(
                     'viewGate',
@@ -77,7 +77,7 @@ class SubscriptionGroupsController extends Controller
     {
         $subscriptionGroup = SubscriptionGroup::create($request->all());
 
-    return redirect()->route('ajax.subscription_groups.index');
+    return redirect()->route('ajax.subscription-groups.index');
 
 
         // return (new GroupResource($subscriptionGroup))
@@ -106,7 +106,7 @@ class SubscriptionGroupsController extends Controller
     {
         $subscriptionGroup->update($request->all());
 
-    return redirect()->route('ajax.subscription_groups.index');
+    return redirect()->route('ajax.subscription-groups.index');
 
         // return (new GroupResource($subscriptionGroup))
         //     ->response()

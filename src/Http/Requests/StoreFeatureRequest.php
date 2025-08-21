@@ -24,7 +24,7 @@ class StoreFeatureRequest extends FormRequest
             'code' => [
                 'string',
                 'required',
-                'unique:subscription_features',
+                'unique:subscription-features',
             ],
             'description' => [
                 'string',

@@ -24,7 +24,7 @@ class UpdateSubscriptionFeatureRequest extends FormRequest
             'code' => [
                 'string',
                 'required',
-                'unique:subscription_features,code,' . request()->route('subscription_feature')->id,
+                'unique:subscription-features,code,' . request()->route('subscription_feature')->id,
             ],
             'description' => [
                 'string',

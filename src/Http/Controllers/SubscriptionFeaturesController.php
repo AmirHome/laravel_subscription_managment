@@ -26,7 +26,7 @@ class SubscriptionFeaturesController extends Controller
                 $viewGate      = 'subscription_feature_show';
                 $editGate      = 'subscription_feature_edit';
                 $deleteGate    = 'subscription_feature_delete';
-                $crudRoutePart = 'subscription_features';
+                $crudRoutePart = 'subscription-features';
 
                 return view('laravel_subscription_managment::partials.datatablesActions', compact(
                     'viewGate',
@@ -80,7 +80,7 @@ class SubscriptionFeaturesController extends Controller
     $subscriptionFeature = SubscriptionFeature::create($request->all());
 
         
-    return redirect()->route('ajax.subscription_features.index');
+    return redirect()->route('ajax.subscription-features.index');
     }
 
     public function edit(SubscriptionFeature $subscriptionFeature)
@@ -100,7 +100,7 @@ class SubscriptionFeaturesController extends Controller
     {
         $subscriptionFeature->update($request->all());
 
-    return redirect()->route('ajax.subscription_features.index');
+    return redirect()->route('ajax.subscription-features.index');
 
     }
 

@@ -17,8 +17,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 {{-- @can('user_management_access') --}}
-                    <li class="nav-item has-treeview {{ request()->is("$path/subscription_groups*") ? "menu-open" : "" }} {{ request()->is("$path/subscription_features*") ? "menu-open" : "" }}  {{ request()->is("$path/subscription_products*") ? "menu-open" : "" }}">
-                        <a class="nav-link nav-dropdown-toggle {{ request()->is("$path/subscription_groups*") ? "active" : "" }} {{ request()->is("$path/subscription_features*") ? "active" : "" }} {{ request()->is("$path/subscription_products*") ? "active" : "" }}"  href="#">
+                    <li class="nav-item has-treeview {{ request()->is("$path/subscription-groups*") ? "menu-open" : "" }} {{ request()->is("$path/subscription-features*") ? "menu-open" : "" }}  {{ request()->is("$path/subscription-products*") ? "menu-open" : "" }}">
+                        <a class="nav-link nav-dropdown-toggle {{ request()->is("$path/subscription-groups*") ? "active" : "" }} {{ request()->is("$path/subscription-features*") ? "active" : "" }} {{ request()->is("$path/subscription-products*") ? "active" : "" }}"  href="#">
                             <i class="fa-fw nav-icon fas fa-puzzle-piece">
 
                             </i>
@@ -30,7 +30,7 @@
                         <ul class="nav nav-treeview">
                             {{-- @can('group_access') --}}
                             <li class="nav-item">
-                                <a href="{{ route("ajax.subscription_groups.index") }}" class="nav-link {{ request()->is("$path/subscription_groups") || request()->is("$path/subscription_groups/*") ? "active" : "" }}">
+                                <a href="{{ route("ajax.subscription-groups.index") }}" class="nav-link {{ request()->is("$path/subscription-groups") || request()->is("$path/subscription-groups/*") ? "active" : "" }}">
                                     <i class="fa-fw nav-icon fas fa-layer-group"></i>
                                     <p>
                                         {{ trans('laravel_subscription_managment::cruds.subscriptionGroup.title') }}
@@ -40,7 +40,7 @@
                             {{-- @endcan --}}
                             {{-- @can('feature_access') --}}
                             <li class="nav-item">
-                                <a href="{{ route('ajax.subscription_features.index') }}" class="nav-link {{ request()->is("$path/subscription_features") || request()->is("$path/subscription_features/*") ? "active" : "" }}">
+                                <a href="{{ route('ajax.subscription-features.index') }}" class="nav-link {{ request()->is("$path/subscription-features") || request()->is("$path/subscription-features/*") ? "active" : "" }}">
                                     <i class="fa-fw nav-icon fas fa-star"></i>
                                     <p>
                                         {{ trans('laravel_subscription_managment::cruds.subscriptionFeature.title') }}
@@ -49,7 +49,7 @@
                             </li>
                             {{-- @endcan --}}
                                 <li class="nav-item">
-                                    <a href="{{ route('ajax.subscription_products.index') }}" class="nav-link {{ request()->is("$path/subscription_products") || request()->is("$path/subscription_products/*") ? "active" : "" }}">
+                                    <a href="{{ route('ajax.subscription-products.index') }}" class="nav-link {{ request()->is("$path/subscription-products") || request()->is("$path/subscription-products/*") ? "active" : "" }}">
                                         <i class="fa-fw nav-icon fas fa-box"></i>
                                         <p>
                                             {{ trans('laravel_subscription_managment::cruds.subscriptionProduct.title') }}
