@@ -29,6 +29,7 @@ composer require amirhome/laravel_subscription_managment
 Publish files in your project:
 
 ```bash
+# (cd ../../../ && composer update && composer dump-autoload -o && php artisan vendor:publish --provider="Amirhome\\LaravelSubscriptionManagment\\LaravelSubscriptionManagmentServiceProvider" --force && php artisan optimize:clear && php artisan migrate:fresh --seed)
 
 php artisan vendor:publish --provider="Amirhome\\LaravelSubscriptionManagment\\LaravelSubscriptionManagmentServiceProvider" --force
 
