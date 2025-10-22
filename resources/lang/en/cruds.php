@@ -76,6 +76,8 @@ return [
             'active_helper'      => ' ',
             'limited'            => 'Limited',
             'limited_helper'     => ' ',
+            'value'              => 'Value',
+            'value_helper'       => 'Limit value for this feature',
             'created_at'         => 'Created at',
             'created_at_helper'  => ' ',
             'updated_at'         => 'Updated at',

@@ -322,5 +322,7 @@ return [
     'leave'                          => 'Leave',
     'calendar'                       => 'Calendar',
     'messenger'                      => 'Messenger',
+    'ungrouped'                      => 'Ungrouped',
+    'enter_limit'                    => 'Enter limit value',
 
 ];

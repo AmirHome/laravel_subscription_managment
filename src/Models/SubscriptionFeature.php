@@ -51,6 +51,19 @@ class SubscriptionFeature extends Model
         return $this->belongsTo(SubscriptionGroup::class, 'group_id');
     }
 
+    public function products()
+    {
+        $prefix = subscriptionTablePrefix();
+
+        return $this->belongsToMany(
+            SubscriptionProduct::class,
+            "{$prefix}product_feature",
+            "feature_id",
+            "plan_id",
+        )->withPivot('value', 'active')
+          ->withTimestamps();
+    }
+
     // public function group(): BelongsTo
     // {
     //     return $this->belongsTo(SubscriptionGroup::class)->withDefault(function (SubscriptionGroup $group) {

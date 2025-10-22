@@ -104,7 +104,7 @@ class SubscriptionProductsController extends Controller
 
         $groups = SubscriptionGroup::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
 
-        $subscriptionProduct->load('group');
+        $subscriptionProduct->load('group', 'features');
         $productActiveStatus = SubscriptionProduct::ACTIVE_SELECT;
         $productTypes = SubscriptionProduct::TYPE_SELECT;
 
@@ -122,7 +122,7 @@ class SubscriptionProductsController extends Controller
     {
         // abort_if(Gate::denies('subscription_product_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $subscriptionProduct->load('group');
+        $subscriptionProduct->load('group', 'features');
 
         return view('laravel_subscription_managment::admin.products.show', compact('subscriptionProduct'));
     }
@@ -145,5 +145,37 @@ class SubscriptionProductsController extends Controller
         }
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function updateProductFeatures(Request $request, SubscriptionProduct $subscriptionProduct)
+    {
+        // abort_if(Gate::denies('subscription_product_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $features_data = [];
+        
+        if ($request->has('features')) {
+            foreach ($request->input('features') as $feature_id => $feature_data) {
+                // Get the feature to check if it's limited
+                $feature = \Amirhome\LaravelSubscriptionManagment\Models\SubscriptionFeature::find($feature_id);
+                
+                // Determine the value based on whether feature is limited
+                // ستون value از نوع double و NOT NULL است با default 0
+                $value = 0;
+                if ($feature && $feature->limited && !empty($feature_data['value'])) {
+                    $value = is_numeric($feature_data['value']) ? (float)$feature_data['value'] : 0;
+                }
+                
+                $features_data[$feature_id] = [
+                    'value' => $value,
+                    'active' => isset($feature_data['active']) ? 1 : 0,
+                ];
+            }
+        }
+
+        $subscriptionProduct->features()->sync($features_data);
+
+        return redirect()
+            ->route('ajax.subscription-products.edit', $subscriptionProduct->id)
+            ->with('message', 'Product features updated successfully');
     }
 }

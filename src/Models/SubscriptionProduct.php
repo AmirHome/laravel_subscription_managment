@@ -72,7 +72,13 @@ class SubscriptionProduct extends Model implements ContractUI
             "{$prefix}product_feature",
             "plan_id",
             "feature_id",
-        )->withPivot('value', 'active');
+        )->withPivot('value', 'active')
+          ->withTimestamps();
+    }
+
+    public function productFeatures()
+    {
+        return $this->features();
     }
 
     public function getCode(): string

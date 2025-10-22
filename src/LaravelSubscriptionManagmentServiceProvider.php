@@ -21,6 +21,19 @@ class LaravelSubscriptionManagmentServiceProvider extends ServiceProvider
             __DIR__ . '/../resources/views' => resource_path('views/laravel_subscription_managment'),
         ], 'laravel_subscription_managment_views');
 
+        // Models را publish نمی‌کنیم چون در app/Models سفارشی‌سازی شده‌اند
+        // برای publish دستی از tag زیر استفاده کنید:
+        // php artisan vendor:publish --tag=laravel_subscription_managment_models
+        
+        // $this->publishes([
+        //     __DIR__ . '/Models/SubscriptionProduct.php' => app_path('Models/SubscriptionProduct.php'),
+        //     __DIR__ . '/Models/SubscriptionFeature.php' => app_path('Models/SubscriptionFeature.php'),
+        //     __DIR__ . '/Models/SubscriptionGroup.php' => app_path('Models/SubscriptionGroup.php'),
+        // ], 'laravel_subscription_managment_models');
+
+        // $this->publishes([
+        //     __DIR__ . '/../seeders/SubscriptionSeeder.php' => database_path('seeders/SubscriptionSeeder.php'),
+        // ], 'laravel_subscription_managment_seeders');
     }
     public function register()
     {
@@ -28,6 +41,5 @@ class LaravelSubscriptionManagmentServiceProvider extends ServiceProvider
         $this->loadRoutesFrom(__DIR__ . '/Http/Routes/web.php');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'laravel_subscription_managment');
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'laravel_subscription_managment');
-
     }
 }
