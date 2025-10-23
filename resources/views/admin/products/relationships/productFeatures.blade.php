@@ -32,7 +32,7 @@
                                 @php
                                     $pivot = $attached_features->get($feature->id);
                                     $is_attached = !is_null($pivot);
-                                    $value = $is_attached ? $pivot->value : 0;
+                                    $value = $is_attached ? $pivot->value : '';
                                     $active = $is_attached ? $pivot->active : 0;
                                 @endphp
                                 <tr>
@@ -55,7 +55,7 @@
                                                 placeholder="{{ trans('laravel_subscription_managment::global.enter_limit') }}"
                                             >
                                         @else
-                                            <span class="text-muted">-</span>
+                                            <span class="text-muted"></span>
                                         @endif
                                     </td>
                                     <td class="text-center">
@@ -85,22 +85,3 @@
         </form>
     </div>
 </div>
-
-<style>
-    .table-secondary td {
-        background-color: #e9ecef !important;
-        font-weight: 600;
-        font-size: 14px;
-    }
-    
-    .form-control-sm {
-        height: calc(1.5em + 0.5rem + 2px);
-        padding: 0.25rem 0.5rem;
-        font-size: 0.875rem;
-    }
-    
-    .badge {
-        font-size: 0.75rem;
-        padding: 0.25rem 0.5rem;
-    }
-</style>
