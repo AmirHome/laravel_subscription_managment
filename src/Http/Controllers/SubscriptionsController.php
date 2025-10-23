@@ -1,8 +1,20 @@
 <?php
+/**
+ * NOTE FOR PUBLISHED CONTROLLERS:
+ * When you publish this controller into your application (php artisan vendor:publish --tag=laravel_subscription_managment_controllers)
+ * you MUST update the namespace and base Controller import to match your app structure. Example changes you should make
+ * in the published file located at app/Http/Controllers/Admin/SubscriptionFeaturesController.php:
+ *
+ * namespace App\Http\Controllers\Admin;
+ *
+ * use App\Http\Controllers\Controller;
+ *
+ * Without these edits the controller will continue to reference the package namespace and may not integrate with your
+ * application (policies, requests, resources or models you expect to use from App\ namespace).
+ */
 
 namespace Amirhome\LaravelSubscriptionManagment\Http\Controllers;
 
-use Amirhome\LaravelSubscriptionManagment\Http\Controllers\Controller;
 use Amirhome\LaravelSubscriptionManagment\Http\Requests\MassDestroySubscriptionRequest;
 use Amirhome\LaravelSubscriptionManagment\Http\Requests\StoreSubscriptionRequest;
 use Amirhome\LaravelSubscriptionManagment\Http\Requests\UpdateSubscriptionRequest;

@@ -28,6 +28,22 @@ class LaravelSubscriptionManagmentServiceProvider extends ServiceProvider
             __DIR__ . '/Http/Controllers/SubscriptionsController.php' => app_path('Http/Controllers/Admin/SubscriptionsController.php'),
         ], 'laravel_subscription_managment_controllers');
         
+        // Friendly console notice: if the user runs vendor:publish for this package (by tag or provider)
+        // print an instruction reminding them to update the published controller namespaces and imports.
+        if ($this->app->runningInConsole()) {
+            $argv = $_SERVER['argv'] ?? [];
+            $argvStr = implode(' ', $argv);
+            $tagUsed = str_contains($argvStr, 'laravel_subscription_managment_controllers');
+            $providerUsed = str_contains($argvStr, 'LaravelSubscriptionManagmentServiceProvider') || str_contains($argvStr, 'Amirhome\\LaravelSubscriptionManagment\\LaravelSubscriptionManagmentServiceProvider');
+
+            if ($tagUsed || $providerUsed) {
+                // Use STDOUT to ensure the message appears in the artisan console output.
+                fwrite(STDOUT, PHP_EOL . "IMPORTANT: Published controllers require manual edits.\n");
+                fwrite(STDOUT, " - Update namespace to: namespace App\\Http\\Controllers\\Admin;\n");
+                fwrite(STDOUT, " - Update base controller import to: use App\\Http\\Controllers\\Controller;\n");
+                fwrite(STDOUT, "Please open the published files under app/Http/Controllers/Admin and make these changes so the controllers integrate with your application.\n\n");
+            }
+        }
     }
     public function register()
     {
