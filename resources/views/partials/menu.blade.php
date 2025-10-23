@@ -17,8 +17,8 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
                 {{-- @can('user_management_access') --}}
-                    <li class="nav-item has-treeview {{ request()->is("$path/subscription-groups*") ? "menu-open" : "" }} {{ request()->is("$path/subscription-features*") ? "menu-open" : "" }}  {{ request()->is("$path/subscription-products*") ? "menu-open" : "" }}">
-                        <a class="nav-link nav-dropdown-toggle {{ request()->is("$path/subscription-groups*") ? "active" : "" }} {{ request()->is("$path/subscription-features*") ? "active" : "" }} {{ request()->is("$path/subscription-products*") ? "active" : "" }}"  href="#">
+                    <li class="nav-item has-treeview {{ request()->is("$path/subscription-groups*") ? "menu-open" : "" }} {{ request()->is("$path/subscription-features*") ? "menu-open" : "" }}  {{ request()->is("$path/subscription-products*") ? "menu-open" : "" }} {{ request()->is("$path/subscriptions*") ? "menu-open" : "" }}">
+                        <a class="nav-link nav-dropdown-toggle {{ request()->is("$path/subscription-groups*") ? "active" : "" }} {{ request()->is("$path/subscription-features*") ? "active" : "" }} {{ request()->is("$path/subscription-products*") ? "active" : "" }} {{ request()->is("$path/subscriptions*") ? "active" : "" }}"  href="#">
                             <i class="fa-fw nav-icon fas fa-puzzle-piece">
 
                             </i>
@@ -48,14 +48,27 @@
                                 </a>
                             </li>
                             {{-- @endcan --}}
-                                <li class="nav-item">
-                                    <a href="{{ route('ajax.subscription-products.index') }}" class="nav-link {{ request()->is("$path/subscription-products") || request()->is("$path/subscription-products/*") ? "active" : "" }}">
-                                        <i class="fa-fw nav-icon fas fa-box"></i>
-                                        <p>
-                                            {{ trans('laravel_subscription_managment::cruds.subscriptionProduct.title') }}
-                                        </p>
-                                    </a>
-                                </li>
+                            {{-- @can('product_access') --}}
+                            <li class="nav-item">
+                                <a href="{{ route('ajax.subscription-products.index') }}" class="nav-link {{ request()->is("$path/subscription-products") || request()->is("$path/subscription-products/*") ? "active" : "" }}">
+                                    <i class="fa-fw nav-icon fas fa-box"></i>
+                                    <p>
+                                        {{ trans('laravel_subscription_managment::cruds.subscriptionProduct.title') }}
+                                    </p>
+                                </a>
+                            </li>
+                            {{-- @endcan --}}
+                            {{-- @can('subscription_access') --}}
+                            <li class="nav-item">
+                                <a href="{{ route('ajax.subscriptions.index') }}" class="nav-link {{ request()->is("$path/subscriptions") || request()->is("$path/subscriptions/*") ? "active" : "" }}">
+                                    <i class="fa-fw nav-icon fas fa-hand-holding-usd"></i>
+                                    <p>
+                                        {{ trans('laravel_subscription_managment::cruds.subscription.title') }}
+                                    </p>
+                                </a>
+                            </li>
+                            {{-- @endcan --}}
+
                         </ul>
                     </li>
                 {{-- @endcan --}}
