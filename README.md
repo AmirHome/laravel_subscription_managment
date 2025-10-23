@@ -49,3 +49,16 @@ php artisan serve
 ## License
 
 This package is open-source software licensed under the [MIT License](LICENSE).
+
+## Help to publish the package
+```bash
+git add .
+git commit -m "changes"
+
+init_number=1000; build_number=$(($(git rev-list HEAD --count) + init_number)); major=$((build_number / 1000)); minor=$(( (build_number / 10) % 100 )); patch=$((build_number % 10)); version="$major.$minor.$patch"; echo "git tag -a v$version -m \"version $version\""
+
+git tag -a v0.1.0 -m "version 0.1.0"
+git push origin master --tags
+
+```
+
