@@ -18,7 +18,7 @@ class LaravelSubscriptionManagmentServiceProvider extends ServiceProvider
         ], 'laravel_subscription_managment_migrations');
 
         $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/laravel_subscription_managment'),
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/laravel_subscription_managment'),
         ], 'laravel_subscription_managment_views');
 
         $this->publishes([
