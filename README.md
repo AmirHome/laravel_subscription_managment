@@ -69,7 +69,7 @@ If you need to remove all published files from your Laravel project:
 # Remove config file 
 rm -f config/laravel_subscription_managment.php
 
-rm -rf resources/views/laravel_subscription_managment
+rm -rf resources/views/vendor/laravel_subscription_managment
 rm -f app/Http/Controllers/Admin/SubscriptionGroupsController.php
 rm -f app/Http/Controllers/Admin/SubscriptionFeaturesController.php
 rm -f app/Http/Controllers/Admin/SubscriptionProductsController.php
