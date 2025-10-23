@@ -25,6 +25,11 @@ class Subscription extends Model
 {
     use ValidTrait;
 
+    public const UNLIMITED_SELECT = [
+        '0' => 'No',
+        '1' => 'Yes',
+    ];
+
     public function getTable(): string
     {
         return subscriptionTablePrefix() . 'subscriptions';
