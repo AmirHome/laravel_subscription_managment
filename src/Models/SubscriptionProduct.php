@@ -4,6 +4,7 @@ namespace Amirhome\LaravelSubscriptionManagment\Models;
 
 use Amirhome\LaravelSubscriptionManagment\Concerns\ContractUI;
 use DateTimeInterface;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -70,7 +71,7 @@ class SubscriptionProduct extends Model implements ContractUI
         return $this->belongsToMany(
             SubscriptionFeature::class,
             "{$prefix}product_feature",
-            "plan_id",
+            "product_id",
             "feature_id",
         )->withPivot('value', 'active')
           ->withTimestamps();

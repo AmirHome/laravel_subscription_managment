@@ -36,7 +36,7 @@ return [
             'subscriber_helper'      => ' ',
             'subscriber_type'        => 'Subscriber Type',
             'subscriber_type_helper' => ' ',
-            'product'                => 'plan_id',
+            'product'                => 'product_id',
             'product_helper'         => ' ',
         ],
     ],

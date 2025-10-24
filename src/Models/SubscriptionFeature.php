@@ -3,6 +3,7 @@
 namespace Amirhome\LaravelSubscriptionManagment\Models;
 
 use DateTimeInterface;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -60,7 +61,7 @@ class SubscriptionFeature extends Model
             SubscriptionProduct::class,
             "{$prefix}product_feature",
             "feature_id",
-            "plan_id",
+            "product_id",
         )->withPivot('value', 'active')
           ->withTimestamps();
     }

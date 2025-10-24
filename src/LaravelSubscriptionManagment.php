@@ -82,7 +82,7 @@ class LaravelSubscriptionManagment
     public function switchTo(ContractUI $item, string|CarbonInterface|null $startAt = null, ?int $period = null, bool $withPlugins = true): self
     {
         throw_if(!$this->subscription, SubscriptionRequiredExp::class);
-        throw_if($this->subscription->plan_id === $item->getKey(), SwitchToSamePlanExp::class);
+        throw_if($this->subscription->product_id === $item->getKey(), SwitchToSamePlanExp::class);
 
         $startAt ??= $this->subscription->start_at;
         $this->suppress($startAt);

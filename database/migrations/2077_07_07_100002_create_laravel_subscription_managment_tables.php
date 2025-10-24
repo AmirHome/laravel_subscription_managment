@@ -54,7 +54,7 @@ return new class extends Migration
 
         Schema::create("{$prefix}product_feature", function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\SubscriptionProduct', 'plan_id');
+            $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\SubscriptionProduct', 'product_id');
             $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\SubscriptionFeature', 'feature_id');
             $table->boolean('active')->default(true);
             $table->double('value')->unsigned()->default(0);
@@ -65,7 +65,7 @@ return new class extends Migration
         Schema::create("{$prefix}subscriptions", function (Blueprint $table) {
             $table->id();
             $table->morphs("subscriber");
-            $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\SubscriptionProduct', 'plan_id');
+            $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\SubscriptionProduct', 'product_id');
             $table->boolean("unlimited")->default(false);
             $table->timestamp("start_at")->nullable();
             $table->timestamp("end_at")->nullable();

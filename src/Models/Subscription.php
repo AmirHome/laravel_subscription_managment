@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 /**
  * @property Collection<SubscriptionContract> $contracts
- * @property Product $plan
+ * @property SubscriptionProduct $product
  * @property Model $subscriber
  * @property Collection<SubscriptionQuota> $quotas
  * @property Collection<FeatureConsumption> $consumptions
@@ -35,7 +35,7 @@ class Subscription extends Model
         return subscriptionTablePrefix() . 'subscriptions';
     }
     
-    protected $fillable = ['subscriber_type', 'subscriber_id', 'plan_id', 'start_at', 'end_at', 'suppressed_at', 'canceled_at', 'billing_period', 'unlimited'];
+    protected $fillable = ['subscriber_type', 'subscriber_id', 'product_id', 'start_at', 'end_at', 'suppressed_at', 'canceled_at', 'billing_period', 'unlimited'];
     protected $casts = [
         'start_at' => 'datetime',
         'end_at' => 'datetime',
@@ -58,9 +58,9 @@ class Subscription extends Model
         return $this->hasManyThrough(ContractTransaction::class, SubscriptionContract::class);
     }
 
-    public function plan(): BelongsTo
+    public function product(): BelongsTo
     {
-        return $this->belongsTo(SubscriptionProduct::class, 'plan_id')->withTrashed();
+        return $this->belongsTo(SubscriptionProduct::class, 'product_id')->withTrashed();
     }
 
     public function quotas(): HasMany
@@ -108,14 +108,14 @@ class Subscription extends Model
     public function scopeActive(Builder $query): Builder
     {
         /* @phpstan-ignore-next-line */
-        return $query->valid()->whereNot(fn(Builder $query) => $query->suppressed()->orWhere->canceled());
+        return $query->valid()->whereNot(fn(Builder $query) => $query->supersede()->orWhere->canceled());
     }
 
     public function scopeSearch(Builder $query, string $keyword): Builder
     {
         return $query->where(function (Builder $query) use ($keyword) {
             /* @phpstan-ignore-next-line  */
-            $query->whereHas('plan', fn(Builder $query) => $query->search($keyword))
+            $query->whereHas('product', fn(Builder $query) => $query->search($keyword))
                 ->orWhere('subscriber_id', $keyword);
         });
     }

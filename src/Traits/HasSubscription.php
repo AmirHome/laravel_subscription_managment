@@ -90,7 +90,7 @@ trait HasSubscription
 
     public function isSubscribedTo(ContractUI $plan): bool
     {
-        return $this->getSubscription()->plan_id === $plan->getKey();
+        return $this->getSubscription()->product_id === $plan->getKey();
     }
 
     public function subscriptionHandler(): LaravelSubscriptionManagment

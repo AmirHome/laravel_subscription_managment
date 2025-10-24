@@ -38,10 +38,10 @@ readonly class ContractsHandler
         $contract = $this->getContract($item, $startAt, $period);
         $transaction = $this->logTransaction($contract, $causative, $startAt, $period);
 
-        if ($contract->end_at && $contract->end_at->lt($transaction->end_at)) {
+        if ($transaction->end_at && $contract->end_at && $contract->end_at->lt($transaction->end_at)) {
             $contract->update(['end_at' => $transaction->end_at, 'auto_renew' => true]);
         }
-        if ($this->subscription->end_at && $this->subscription->end_at->lt($transaction->end_at)) {
+        if ($transaction->end_at && $this->subscription->end_at && $this->subscription->end_at->lt($transaction->end_at)) {
             $this->subscription->update(['end_at' => $transaction->end_at]);
         }
 
@@ -125,7 +125,7 @@ readonly class ContractsHandler
     public function sync(): void
     {
         $quotas = [];
-        $this->subscription->plan->getFeatures()->each(function (SubscriptionFeature $feature, int|string $_) use (&$quotas) {
+        $this->subscription->product->getFeatures()->each(function (SubscriptionFeature $feature, int|string $_) use (&$quotas) {
             if ($feature->pivot->active ?? false) {
                 $quotas[$feature->code] = [
                     'feature' => $feature,

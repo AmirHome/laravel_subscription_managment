@@ -76,12 +76,15 @@ class SubscriptionBuilder
     {
         throw_if(!$this->plan, SubscriptionRequiredExp::class);
 
+        $startAt = $this->getStartDate();
+        $endAt = $this->getEndDate();
+
         /* @phpstan-ignore-next-line */
         return $this->subscriber->subscriptions()->create([
-            'plan_id' => $this->plan->getKey(),
-            'start_at' => $this->getStartDate(),
-            'end_at' => $this->getEndDate(),
-            'billing_period' => $this->getPeriod(),
+            'product_id' => $this->plan->getKey(),
+            'start_at' => $startAt,
+            'end_at' => $endAt,
+            'billing_period' => $this->period,
         ]);
     }
 }
