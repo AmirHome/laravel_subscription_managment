@@ -4,6 +4,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Amirhome\LaravelSubscriptionManagment\Models\SubscriptionGroup;
+use Amirhome\LaravelSubscriptionManagment\Models\SubscriptionProduct;
 
 
 return new class extends Migration
@@ -11,20 +13,25 @@ return new class extends Migration
     public function up(): void
     {
         $prefix = subscriptionTablePrefix();
-        Schema::create("{$prefix}groups", function (Blueprint $table) {
+        $groupTypes = SubscriptionGroup::TYPE_SELECT;
+        $productTypes = SubscriptionProduct::TYPE_SELECT;
+
+        Schema::create("{$prefix}groups", function (Blueprint $table) use ($groupTypes) {
             $table->id();
             $table->string("name");
-            $table->enum("type", ['plan', 'plugin', 'feature']);
+            $table->enum("type", array_values($groupTypes));
+            // $table->enum("type", ['plan', 'plugin', 'feature']);
             $table->timestamps();
             $table->softDeletes();
         });
-        Schema::create("{$prefix}products", function (Blueprint $table) {
+        Schema::create("{$prefix}products", function (Blueprint $table) use ($productTypes) {
             $table->id();
             $table->string("name");
             $table->string("code")->unique();
             $table->text("description")->nullable();
             $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\SubscriptionGroup', 'group_id')->nullable();
-            $table->enum("type", ['recurring', 'non-recurring'])->default('recurring');
+            $table->enum("type", array_values($productTypes))->default($productTypes['1']);
+            // $table->enum("type", ['recurring', 'non-recurring'])->default('recurring');
             $table->boolean('active')->default(true);
             $table->double("price")->default(0);
             $table->double("price_yearly")->default(0);
@@ -68,7 +75,7 @@ return new class extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-        Schema::create("{$prefix}contracts", function (Blueprint $table) {
+        Schema::create("{$prefix}contracts", function (Blueprint $table) use ($productTypes) {
             $table->id();
             $table->foreignIdFor(config('laravel_subscription_managment.model_path') . '\Subscription');
             $table->string("code");
@@ -77,7 +84,8 @@ return new class extends Migration
             $table->timestamp("start_at");
             $table->timestamp("end_at")->nullable();
             $table->boolean("auto_renew")->default(true);
-            $table->enum("type", ['recurring', 'non-recurring']);
+            $table->enum("type", array_values($productTypes));
+            // $table->enum("type", ['recurring', 'non-recurring']);
             $table->timestamps();
             $table->softDeletes();
         });

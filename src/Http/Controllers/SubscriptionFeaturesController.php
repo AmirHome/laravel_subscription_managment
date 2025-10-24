@@ -86,7 +86,7 @@ class SubscriptionFeaturesController extends Controller
         // abort_if(Gate::denies('subscription_feature_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
     $activeSelect = SubscriptionFeature::ACTIVE_SELECT;
     $limitedSelect = SubscriptionFeature::LIMITED_SELECT;
-        $groups = SubscriptionGroup::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
+        $groups = SubscriptionGroup::where('type', '2')->pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
 
         return view('laravel_subscription_managment::admin.features.create', compact('groups', 'activeSelect', 'limitedSelect'));
     }
@@ -105,7 +105,8 @@ class SubscriptionFeaturesController extends Controller
 
         $activeSelect = SubscriptionFeature::ACTIVE_SELECT;
         $limitedSelect = SubscriptionFeature::LIMITED_SELECT;
-        $groups = SubscriptionGroup::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
+
+        $groups = SubscriptionGroup::where('type', SubscriptionGroup::TYPE_SELECT[2])->pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
 
         $subscriptionFeature->load('group');
 

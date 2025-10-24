@@ -93,7 +93,7 @@ class SubscriptionProductsController extends Controller
     {
         // abort_if(Gate::denies('subscription_product_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $groups = SubscriptionGroup::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
+        $groups = SubscriptionGroup::where('type', SubscriptionGroup::TYPE_SELECT[1])->pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
         $productTypes = SubscriptionProduct::TYPE_SELECT;
         $productActiveStatus = SubscriptionProduct::ACTIVE_SELECT;
 
@@ -111,7 +111,7 @@ class SubscriptionProductsController extends Controller
     {
         // abort_if(Gate::denies('subscription_product_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $groups = SubscriptionGroup::pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
+        $groups = SubscriptionGroup::where('type', SubscriptionGroup::TYPE_SELECT[1])->pluck('name', 'id')->prepend(trans('laravel_subscription_managment::global.pleaseSelect'), '');
 
         $subscriptionProduct->load('group', 'features');
         $productActiveStatus = SubscriptionProduct::ACTIVE_SELECT;

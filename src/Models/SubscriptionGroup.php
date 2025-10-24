@@ -25,9 +25,9 @@ class SubscriptionGroup extends Model
     ];
 
     public const TYPE_SELECT = [
-        '1' => 'plan',
-        '2' => 'plugin',
-        '3' => 'feature',
+        '1' => 'Product',
+        '2' => 'Feature',
+        // '3' => 'plugin',
     ];
 
     protected function serializeDate(DateTimeInterface $date)

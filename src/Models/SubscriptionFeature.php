@@ -49,6 +49,7 @@ class SubscriptionFeature extends Model
     public function group()
     {
         return $this->belongsTo(SubscriptionGroup::class, 'group_id');
+            // ->where('type', '2');
     }
 
     public function products()
