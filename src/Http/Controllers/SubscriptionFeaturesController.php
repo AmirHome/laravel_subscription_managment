@@ -16,6 +16,7 @@
 
 namespace Amirhome\LaravelSubscriptionManagment\Http\Controllers;
 
+use Gate;
 use Illuminate\Http\Request;
 use Amirhome\LaravelSubscriptionManagment\Http\Requests\MassDestroySubscriptionFeatureRequest;
 use Symfony\Component\HttpFoundation\Response;

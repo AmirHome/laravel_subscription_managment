@@ -21,6 +21,7 @@ namespace Amirhome\LaravelSubscriptionManagment\Http\Controllers;
 // use App\Http\Requests\UpdateGroupRequest;
 // use App\Http\Resources\SubscriptionGroupResource;
 // use App\Models\SubscriptionGroup;
+use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Amirhome\LaravelSubscriptionManagment\Models\SubscriptionGroup;
