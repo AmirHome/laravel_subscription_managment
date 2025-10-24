@@ -7,7 +7,7 @@ use App\Models\User;
 use Amirhome\LaravelSubscriptionManagment\LaravelSubscriptionManagment;
 
 
-class DatabaseSeeder extends Seeder
+class SubscriptionSeeder extends Seeder
 {
     
     /**
@@ -26,13 +26,13 @@ class DatabaseSeeder extends Seeder
 
         // Check if classes exist before using them
         if (class_exists($groupClass) && class_exists($featureClass) && class_exists($productClass)) {
-            $group1 = new $groupClass(['id' => 1, 'name' => 'Personal', 'type' => 'plugin']);
+            $group1 = new $groupClass(['id' => 1, 'name' => 'Personal', 'type' => 'Product']);
             $group1->save();
 
-            $group2 = new $groupClass(['id' => 2, 'name' => 'Business', 'type' => 'plugin']);
+            $group2 = new $groupClass(['id' => 2, 'name' => 'Business', 'type' => 'Product']);
             $group2->save();
 
-            $group3 = new $groupClass(['id' => 3, 'name' => 'General', 'type' => 'feature']);
+            $group3 = new $groupClass(['id' => 3, 'name' => 'General', 'type' => 'Feature']);
             $group3->save();
 
             $feature = new $featureClass([
@@ -45,9 +45,9 @@ class DatabaseSeeder extends Seeder
             ]);
             $feature->save();
 
-            // Free Plugin
-            $plugin = new $productClass([
-                'name' => 'Free Plugin',
+            // Free Product
+            $product = new $productClass([
+                'name' => 'Free Product',
                 'description' => 'Explore how AI can help you with everyday tasks',
                 'group_id' => 1,
                 'code' => 'free',
@@ -56,13 +56,13 @@ class DatabaseSeeder extends Seeder
                 'active' => true,
                 'type' => 1,
             ]);
-            $plugin->save();
-            $plugin->features()->attach($feature, ['value' => '2000']);
+            $product->save();
+            $product->features()->attach($feature, ['value' => '2000']);
 
 
-            # Plus Plugin
-            $plugin = new $productClass([
-                'name' => 'Plus Plugin',
+            # Plus Product
+            $product = new $productClass([
+                'name' => 'Plus Product',
                 'description' => 'Level up productivity and creativity with expanded access',
                 'group_id' => 1,
                 'code' => 'plus',
@@ -71,9 +71,9 @@ class DatabaseSeeder extends Seeder
                 'price_yearly' => 200,
                 'active' => true,
             ]);
-            $plugin->save();
+            $product->save();
 
-            $plugin->features()->create([
+            $product->features()->create([
                 'name' => 'o3-mini',
                 'description' => 'Access to multiple reasoning models (o3-mini, o3-mini-high, and o1)',
                 'group_id' => 3,
@@ -82,9 +82,9 @@ class DatabaseSeeder extends Seeder
                 'limited' => false,
             ]);
 
-            # Pro Plugin
-            $plugin = new $productClass([
-                'name' => 'Pro Plugin',
+            # Pro Product
+            $product = new $productClass([
+                'name' => 'Pro Product',
                 'description' => 'Get the best of OpenAI with the highest level of access',
                 'group_id' => 1,
                 'code' => 'pro',
@@ -92,10 +92,10 @@ class DatabaseSeeder extends Seeder
                 'price_yearly' => 2000,
                 'active' => true,
             ]);
-            $plugin->save();
+            $product->save();
             # Unlimited GPT-4o
-            $plugin->features()->attach($feature, ['value' => '999999999']);
-            // $plugin->features()->create([
+            $product->features()->attach($feature, ['value' => '999999999']);
+            // $product->features()->create([
             //     'name' => 'GPT-4o',
             //     'description' => 'Unlimited access to all reasoning models and GPT-4o',
             //     'group_id' => 3,
@@ -104,13 +104,13 @@ class DatabaseSeeder extends Seeder
             //     'limited' => false,
             // ]);
 
-            # User1 assigns free plugin
+            # User1 assigns free Product
             $user = \App\Models\User::find(1);
-            $plugin = $productClass::find(1);
-            LaravelSubscriptionManagment::make($user)->subscribeTo($plugin);
+            $product = $productClass::find(1);
+            LaravelSubscriptionManagment::make($user)->subscribeTo($product);
 
             #LaravelSubscriptionManagment::make($user)->renew();
-            $code = $plugin->getCode();
+            $code = $product->getCode();
             echo "$user->email subscribed to $code\n";
             echo "Is GPT-4o available? " . $user->canConsume('GPT-4o') . "\n";
 
@@ -120,31 +120,31 @@ class DatabaseSeeder extends Seeder
             # $user->retrieve('GPT-4o');
             $subscription = $user->getSubscription();
             echo $subscription . "\n";
-            echo "plugin getKey " . $plugin->getKey() . "\n";
+            echo "Product getKey " . $product->getKey() . "\n";
             echo "subscription getKey " . $subscription->getKey() . "\n";
             echo $user->canConsumeAny(['GPT-4o', 'o3-mini']);
             echo "\n";
 
 
-            # User2 assigns plus plugin
+            # User2 assigns plus Product
             $user = \App\Models\User::find(2);
-            $plugin = $productClass::find(2);
-            LaravelSubscriptionManagment::make($user)->subscribeTo($plugin);
-            # User3 assigns pro plugin
+            $product = $productClass::find(2);
+            LaravelSubscriptionManagment::make($user)->subscribeTo($product);
+            # User3 assigns pro Product
             $user = \App\Models\User::find(3);
-            $plugin = $productClass::find(3);
-            LaravelSubscriptionManagment::make($user)->subscribeTo($plugin);
+            $product = $productClass::find(3);
+            LaravelSubscriptionManagment::make($user)->subscribeTo($product);
 
-            # Create a Contract on Plugin
+            # Create a Contract on Product
             # Set the contract for the subscription
             $user = User::find(4);
-            $subscriptionHandler = LaravelSubscriptionManagment::make($user)->subscribeTo($plugin, '2023-02-01');
-            # $subscriptionHandler = LaravelSubscriptionManagment::make($user)->subscribeTo($plugin, now());
+            $subscriptionHandler = LaravelSubscriptionManagment::make($user)->subscribeTo($product, '2023-02-01');
+            # $subscriptionHandler = LaravelSubscriptionManagment::make($user)->subscribeTo($product, now());
             if ($subscriptionHandler->getSubscription()) {
-                $subscriptionHandler->addPlugin($plugin, '2023-02-02', $user);
-                # $subscriptionHandler->addPlugin($plugin, now());
-                # $subscriptionHandler->cancelPlugin($plugin);
-                # $subscriptionHandler->resumePlugin($plugin);
+                $subscriptionHandler->addPlugin($product, '2023-02-02', $user);
+                # $subscriptionHandler->addPlugin($product, now());
+                # $subscriptionHandler->cancelPlugin($product);
+                # $subscriptionHandler->resumePlugin($product);
             } else {
                 echo "User does not have an active subscription.";
             }
@@ -161,7 +161,7 @@ class DatabaseSeeder extends Seeder
                 $renewedSubscription = $subscriptionHandler->renew(25, false);
 
                 // Update the end date of the renewed subscription
-                $renewedSubscription->addPlugin($plugin, now());
+                $renewedSubscription->addPlugin($product, now());
 
                 echo "Subscription renewed successfully!";
             } else {
